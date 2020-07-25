@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Junit5
+Use @TestInstance(Lifecycle.PER_CLASS) to avoid the need for static members, which are non-idiomatic and cumbersome in Kotlin.
+1@TestInstance(T" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>Best Practices for Testing in Kotlin | Tiny Changes, Remarkable Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Junit5 Use @TestInstance(Lifecycle.PER_CLASS) to avoid the need for static members, which are non-idiomatic and cumbersome in Kotlin. 1@TestInstance(TestInstance.LifeCycle.PER_CLASS)  Instead of annot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Best Practices for Testing in Kotlin">
+<meta property="og:url" content="http://yoursite.com/2020/07/25/Kotin-Unit-Test-Best-Practice/index.html">
+<meta property="og:site_name" content="Tiny Changes, Remarkable Results">
+<meta property="og:description" content="Junit5 Use @TestInstance(Lifecycle.PER_CLASS) to avoid the need for static members, which are non-idiomatic and cumbersome in Kotlin. 1@TestInstance(TestInstance.LifeCycle.PER_CLASS)  Instead of annot">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-25T14:50:33.000Z">
+<meta property="article:modified_time" content="2020-07-25T16:41:01.764Z">
+<meta property="article:author" content="Zou Xuan">
+<meta property="article:tag" content="Technology">
+<meta property="article:tag" content="Kotlin">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Tiny Changes, Remarkable Results" rel="home">Tiny Changes, Remarkable Results</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-Kotin-Unit-Test-Best-Practice" class="post-Kotin-Unit-Test-Best-Practice post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      Best Practices for Testing in Kotlin
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/25/Kotin-Unit-Test-Best-Practice/" data-id="ckd1uufc50000ace2a4k6evbm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="Junit5"><a href="#Junit5" class="headerlink" title="Junit5"></a>Junit5</h2><ul>
+<li><p>Use @TestInstance(Lifecycle.PER_CLASS) to avoid the need for static members, which are non-idiomatic and cumbersome in Kotlin.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@TestInstance(TestInstance.LifeCycle.PER_CLASS)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Instead of annotating every class with @TestInstance() you can change the default lifecycle with the junit-platform.properties file.</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">src&#x2F;test&#x2F;resources junit-platform.properties:</span><br><span class="line">junit.jupiter.testinstance.lifecycle.default&#x3D;per_class</span><br></pre></td></tr></table></figure>
+
+<h2 id="Naming-Grouping"><a href="#Naming-Grouping" class="headerlink" title="Naming, Grouping"></a>Naming, Grouping</h2><ul>
+<li><p>Put the test method names in backticks and use spaces.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Test fun &#96;Dividing by zero should throw the DivideByZeroException&#96;()</span><br><span class="line"> &#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Use @Nested inner classes to group the test methods.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Nested class MyTestClass()&#123; &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Libraries"><a href="#Libraries" class="headerlink" title="Libraries"></a>Libraries</h2><ul>
+<li>There are so many test libraries. Check them out and make up your own mind.<table>
+<thead>
+<tr>
+<th align="left">Language</th>
+<th align="center">Test Frameworks</th>
+<th align="right">Mocking</th>
+<th align="right">Assertions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Kotlin</td>
+<td align="center">Spek<br> KotlinTest</td>
+<td align="right">Mockito-Kotlin<br><strong>MockK</strong></td>
+<td align="right">Strikt<br>Atrium<br>HamKrest<br>Expekt<br>Kluent/AssertK</td>
+</tr>
+<tr>
+<td align="left">Java</td>
+<td align="center"><strong>Junit5</strong></td>
+<td align="right"></td>
+<td align="right"><strong>AssertJ</strong></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="Mock-Handling"><a href="#Mock-Handling" class="headerlink" title="Mock Handling"></a>Mock Handling</h2><ul>
+<li>Don’t recreate, reset! Create mocks only once and reset them in a @BeforeEach. This way, you can use val fields and achieve better performance.</li>
+<li>Use MockK to create mocks in a convenient and idiomatic way. It can also mock final classes by default.</li>
+</ul>
+<h2 id="Data-Classes"><a href="#Data-Classes" class="headerlink" title="Data Classes"></a>Data Classes</h2><ul>
+<li><p>Create a reference object and compare it directly with the actual object using an equality assertion.</p>
+<ul>
+<li>Single Element</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">assertThat(acutalData)</span><br><span class="line">.isEqualToIgnoringGivenFields(expectedData,&quot;id&quot;)</span><br><span class="line">assertThat(acutalData)</span><br><span class="line">.isEqualToComparingOnlyGivenFields(expectedData,&quot;name&quot;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Lists</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">assertThat(actualDatas)</span><br><span class="line">.usingElementComparatorIgnoringFields(&quot;id&quot;)</span><br><span class="line">.containsExacely(expectedData1,expectedData2)</span><br><span class="line">assertThat(actualDatas)</span><br><span class="line">.usingElementComparatorOnFields(&quot;name&quot;)</span><br><span class="line">.containsExacely(expectedData1,expectedData2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Use data classes to carry the test data (input and expected output) in a @ParameterizedTest.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@ParameterizedTest</span><br><span class="line">@MethodSource(&quot;dataProviderFunction&quot;)</span><br><span class="line">fun &#96;test data&#96;(testData:TestData)&#123;</span><br><span class="line">     assertThat(testData.vaule).isEqualTo(testData.expectedToken)</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private fun dataProviderFunction()&#x3D;</span><br><span class="line">Stream.of( TestData(input&#x3D;&quot;a&quot;,expected&#x3D;Token(123,&quot;2&quot;)),</span><br><span class="line">TestData(input&#x3D;&quot;a&quot;,expected&#x3D;Token(123,&quot;2&quot;))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Helper-Functions"><a href="#Helper-Functions" class="headerlink" title="Helper Functions"></a>Helper Functions</h2><ul>
+<li>Write helper functions with default arguments to easily create instances with a complex structure.<ul>
+<li>Helper Function Example<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val testData&#x3D;Data(id&#x3D;1,name&#x3D;&quot;Foo&quot;,dateCreated&#x3D;Instant.now())</span><br><span class="line">fun createData(id:Int&#x3D;1, name:String&#x3D;&quot;Cat&quot;,</span><br><span class="line"> dateCreated&#x3D;Instant.ofEpochSecond(15182781893))&#123;</span><br><span class="line">return Data(id&#x3D;id, name&#x3D;name, dateCreated&#x3D;dateCreated)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Usage<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val testData&#x3D;createData()</span><br><span class="line">val testData2&#x3D;createData(id&#x3D;1,name&#x3D;&quot;Boo&quot;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Helper extension functions are useful to concisely create frequently used values (like Instant, UUID)</li>
+<li>Test-specific extension functions are useful to extend libraries in an idiomatic way to remove distractions in the test code.</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/07/25/Kotin-Unit-Test-Best-Practice/">
+    <time datetime="2020-07-25T14:50:33.000Z" class="entry-date">
+        2020-07-25
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Technology/" rel="tag">Technology</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2020/07/24/Atomic-Habits-4/" rel="next">Atomic Habits - 4 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/25/Kotin-Unit-Test-Best-Practice/">Best Practices for Testing in Kotlin</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/24/Atomic-Habits-4/">Atomic Habits - 4</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/23/Atomic-Habits-3/">Atomic Habits - 3</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/22/Atomic-Habits-2/">Atomic Habits - 2</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/21/Atomic-Habits-1/">Atomic Habits - 1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Atomic-Habits/" style="font-size: 16px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 20px;">Books</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Meditation/" style="font-size: 12px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 14px;">Morning Habits</a> <a href="/tags/Photography/" style="font-size: 18px;">Photography</a> <a href="/tags/Technology/" style="font-size: 12px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 14px;">Tools of Titans</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2020 Zou Xuan
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
