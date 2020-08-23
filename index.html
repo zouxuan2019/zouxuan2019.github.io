@@ -86,13 +86,17 @@
     <div class="entry-content">
       
         <h3 id="Most-commonly-the-steps-in-using-the-Scikit-Learn-estimator-API-are-as-follows"><a href="#Most-commonly-the-steps-in-using-the-Scikit-Learn-estimator-API-are-as-follows" class="headerlink" title="Most commonly, the steps in using the Scikit-Learn estimator API are as follows"></a>Most commonly, the steps in using the Scikit-Learn estimator API are as follows</h3><ul>
-<li>Choose a class of model by importing the appropriate estimator class from Scikit-Learn.<figure class="highlight plain"><figcaption><span>sklearn.linear_model import LinearRegression ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- Choose Model hyperparameters by instantiating this class with desired values.</span><br><span class="line">&#96;&#96;&#96; model&#x3D; LinearRegression()</span><br></pre></td></tr></table></figure></li>
-<li>Arrange data into a features matrix and target vector following the discussion above.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- Fit the model to your data by calling the fit() method of the model instance.</span><br><span class="line">&#96;&#96;&#96;model.fit(x,y)</span><br></pre></td></tr></table></figure></li>
-<li>Apply the Model to new data: <ul>
-<li>For supervised learning, often we predict labels for unknown data using the predict() method.</li>
-<li>For unsupervised learning, we often transform or infer properties of the data using the transform() or predict() method.<figure class="highlight plain"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- Reference</span><br><span class="line">  &#96;&#96;&#96;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1309.0238</span><br></pre></td></tr></table></figure>
+<li><p>Choose a class of model by importing the appropriate estimator class from Scikit-Learn.<br><code>from sklearn.linear_model import LinearRegression</code></p>
 </li>
-</ul>
+<li><p>Choose Model hyperparameters by instantiating this class with desired values.<br><code>model= LinearRegression()</code></p>
+</li>
+<li><p>Arrange data into a features matrix and target vector.<br><code>x=df[&#39;RM&#39;].values.reshape(-1,1)</code><br><code>y=df[&#39;MEDV&#39;].values</code></p>
+</li>
+<li><p>Fit the model to your data by calling the fit() method of the model instance.<br><code>model.fit(x,y)</code></p>
+</li>
+<li><p>Apply the Model to new data:<br> For supervised learning, often we predict labels for unknown data using the predict() method.<br> For unsupervised learning, we often transform or infer properties of the data using the transform() or predict() method.<br><code>model.predict(np.array([7]).reshape(1,-1))</code></p>
+</li>
+<li><p>Reference<br><code>https://arxiv.org/abs/1309.0238</code></p>
 </li>
 </ul>
 
