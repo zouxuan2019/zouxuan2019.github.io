@@ -64,6 +64,134 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-Multiple-Regression" class="post-Multiple-Regression post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/24/Multiple-Regression/">Multiple Regression</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/24/Multiple-Regression/" data-id="cke8p9zuf0000iry3156agtme" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="Difference-between-Simple-Linear-Regression"><a href="#Difference-between-Simple-Linear-Regression" class="headerlink" title="Difference between Simple Linear Regression"></a>Difference between Simple Linear Regression</h2><ul>
+<li>Simple Linear Regression y=β0+β1X</li>
+<li>Multiple Linear Regression y=β0+β1X1+β2X2+…</li>
+</ul>
+<h2 id="Steps-with-example-boston-dataset"><a href="#Steps-with-example-boston-dataset" class="headerlink" title="Steps with example boston dataset"></a>Steps with example boston dataset</h2><ul>
+<li><p>import libraries</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">import seaborn as sns</span><br><span class="line">import sklearn</span><br><span class="line">import sys</span><br></pre></td></tr></table></figure></li>
+<li><p>Load boston dataset directly from scikit learn</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.datasets import load_boston</span><br><span class="line">boston_data &#x3D; load_boston()</span><br><span class="line">df&#x3D;pd.DataFrame(boston_data.data, columns&#x3D;boston_data.feature_names)</span><br><span class="line">df.head()</span><br><span class="line">df.shape</span><br><span class="line">X&#x3D;df</span><br><span class="line">y&#x3D;boston_data.target</span><br><span class="line">y</span><br></pre></td></tr></table></figure></li>
+<li><p>Statsmodels</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">No module named &#39;statsmodels&#39;</span><br><span class="line">import statsmodels.formula.api as smf</span><br><span class="line">X_constant&#x3D; sm.add_constant(X) </span><br><span class="line">pd.DataFrame(X_constant)</span><br><span class="line">model&#x3D;sm.OLS(y,X_constant)</span><br><span class="line">lr&#x3D;model.fit()</span><br><span class="line">lr.summary()</span><br></pre></td></tr></table></figure>
+<p>Note: 1)if P&gt;|t| in the summary is less than 5%(0.05), we take that feature as significant</p>
+<pre><code>2)We need to add a constant term to allow statsmodel api to calculate the bias/intercepts</code></pre></li>
+<li><p>statsmodels.formula.api</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#39;y ~ CRIM+ZN&#39;</span><br><span class="line">form_lr&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B + LSTAT&#39;, data&#x3D;df)</span><br><span class="line">mlr&#x3D; form_lr.fit()</span><br><span class="line">mlr.summary()</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/24/Multiple-Regression/">
+    <time datetime="2020-08-24T14:30:56.000Z" class="entry-date">
+        2020-08-24
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Evaluate-Regression-Model-Performance" class="post-Evaluate-Regression-Model-Performance post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/24/Evaluate-Regression-Model-Performance/">Evaluate Regression Model Performance</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/24/Evaluate-Regression-Model-Performance/" data-id="cke8ljv6w0000xcy34rc89chn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="Split-data-into-training-data-and-test-data"><a href="#Split-data-into-training-data-and-test-data" class="headerlink" title="Split data into training data and test data"></a>Split data into training data and test data</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df[:] &#x3D; np.nan_to_num(df)&#x2F;&#x2F;Replace NaN with zero and infinity with large finite numbers</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">X&#x3D;df.iloc[:,:-1].values</span><br><span class="line">y&#x3D;df[&#39;MEDV&#39;].values</span><br><span class="line">X_train,X_test,y_train,y_test&#x3D;train_test_split(X,y,test_size&#x3D;0.2,random_state&#x3D;0)</span><br><span class="line">lr&#x3D;LinearRegression()</span><br><span class="line">lr.fit(X_train,y_train)</span><br><span class="line">y_train_pred&#x3D;lr.predict(X_train)</span><br><span class="line">y_test_pred&#x3D;lr.predict(X_test)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Method-1-Residual-Analysis"><a href="#Method-1-Residual-Analysis" class="headerlink" title="Method 1: Residual Analysis"></a>Method 1: Residual Analysis</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize&#x3D;(12,8))</span><br><span class="line">plt.scatter(y_train_pred,y_train_pred - y_train,c&#x3D;&#39;blue&#39;,marker&#x3D;&#39;o&#39;,label&#x3D;&#39;Training data&#39;)</span><br><span class="line">plt.scatter(y_test_pred,y_test_pred-y_test,c&#x3D;&#39;orange&#39;, marker&#x3D;&#39;*&#39;, label&#x3D;&#39;Test data&#39;)</span><br><span class="line">plt.xlabel(&#39;Predicted values&#39;)</span><br><span class="line">plt.ylabel(&#39;Resudials&#39;)</span><br><span class="line">plt.legend(loc&#x3D;&#39;upper left&#39;)</span><br><span class="line">plt.hlines(y&#x3D;0,xmin&#x3D;-10, xmax&#x3D;50,lw&#x3D;2,color&#x3D;&#39;k&#39;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Method-2-Mean-Squared-Error-MSE-The-lower-the-number-the-better"><a href="#Method-2-Mean-Squared-Error-MSE-The-lower-the-number-the-better" class="headerlink" title="Method 2: Mean Squared Error (MSE), The lower the number the better"></a>Method 2: Mean Squared Error (MSE), The lower the number the better</h2><ul>
+<li>MSE=(SUM(y_real-y_predict)^2)/n ———-n is the number of y values</li>
+<li>The average value of the Sums of Squared Error cost function</li>
+<li>Useful for comparing different regression models</li>
+<li>For tuning parameters via a grid search and corss-validation<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import mean_squared_error</span><br><span class="line">mean_squared_error(y_train,y_train_pred)</span><br><span class="line">mean_squared_error(y_test,y_test_pred)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Method-3-Coefficient-of-Determination-R-2-The-higher-the-number-the-better"><a href="#Method-3-Coefficient-of-Determination-R-2-The-higher-the-number-the-better" class="headerlink" title="Method 3: Coefficient of Determination R^2, The higher the number the better"></a>Method 3: Coefficient of Determination R^2, The higher the number the better</h2><ul>
+<li>R^2 = 1- SSE/SST</li>
+<li>SSE: Sum of squared errors</li>
+<li>SST: Total sum of squares<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import r2_score</span><br><span class="line">r2_score(y_train,y_train_pred)</span><br><span class="line">r2_score(y_test,y_test_pred)</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/24/Evaluate-Regression-Model-Performance/">
+    <time datetime="2020-08-24T13:41:30.000Z" class="entry-date">
+        2020-08-24
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-Robust-Regression" class="post-Robust-Regression post type-post status-publish format-standard hentry">
     <!---->
 
@@ -657,168 +785,6 @@
 
 
   
-    <article id="post-Atomic-Habits-4" class="post-Atomic-Habits-4 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/24/Atomic-Habits-4/">Atomic Habits - 4</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/24/Atomic-Habits-4/" data-id="ckd0fi7so0000z6y30q6156df" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="How-to-Go-from-Being-Merely-Good-to-Being-Truly-Great"><a href="#How-to-Go-from-Being-Merely-Good-to-Being-Truly-Great" class="headerlink" title="How to Go from Being Merely Good to Being Truly Great"></a>How to Go from Being Merely Good to Being Truly Great</h2><ul>
-<li>The secret to maximizing your odds of success is to choose the right field of competition. (Know your strength)</li>
-<li>Play a game that favors your strengths. If you can’t find a game that favors you, create one.</li>
-<li>Habits are easier when they align with your natural abilities. Choose the habits that best suit you.</li>
-<li>Pick the right habit and progress is easy. Pick the wrong habit and life is a struggle.</li>
-<li>Genes cannot be easily changed, which means they provide a powerful advantage in favorable circumstances and a serious disadvantage in unfavorable circumstances.</li>
-<li>Genes do not eliminate the need for hard work. They clarify it. They tell us what to work hard on.</li>
-</ul>
-<h2 id="How-to-Stay-Motivated-in-Life-and-Work"><a href="#How-to-Stay-Motivated-in-Life-and-Work" class="headerlink" title="How to Stay Motivated in Life and Work"></a>How to Stay Motivated in Life and Work</h2><ul>
-<li>The Goldilocks Rule states that humans experience peak motivation when working on tasks that are right on the edge of their current abilities.</li>
-<li>The greatest threat to success is not failure but boredom.</li>
-<li>As habits become routine, they become less interesting and less satisfying. We get bored.</li>
-<li>Anyone can work hard when they feel motivated. It’s the ability to keep going when work isn’t exciting that makes the difference.</li>
-<li>Professionals stick to the schedule; amateurs let life get in the way.</li>
-</ul>
-<h2 id="The-Downside-of-Creating-Good-Habits"><a href="#The-Downside-of-Creating-Good-Habits" class="headerlink" title="The Downside of Creating Good Habits"></a>The Downside of Creating Good Habits</h2><ul>
-<li>The upside of habits is that we can do things without thinking.<br>The downside is that we stop paying attention to little errors.</li>
-<li>Habits + Deliberate Practice = Mastery</li>
-<li>Reflection and review is a process that allows you to remain conscious of your performance over time.<ul>
-<li>Perform an Annual Review,Reflect on the previous year<ul>
-<li>Count up how many books you have read</li>
-<li>How many workouts you put in</li>
-<li>How many new places you visited</li>
-<li>more…</li>
-</ul>
-</li>
-<li>Reflect on progress<ul>
-<li>What went well this year?</li>
-<li>What didn’t go so well this year?</li>
-<li>What did I learn?</li>
-</ul>
-</li>
-<li>Six months after Reflection, conduct an Integrity Report<ul>
-<li>What are the core values that drive my life and work?</li>
-<li>How am I living and working with integrity right now?</li>
-<li>How can I set a higher standard in the future?</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>The tighter we cling to an identity, the harder it becomes to grow beyond it.</li>
-</ul>
-<h2 id="Conclusion：-The-Secret-to-Results-That-Last"><a href="#Conclusion：-The-Secret-to-Results-That-Last" class="headerlink" title="Conclusion： The Secret to Results That Last"></a>Conclusion： The Secret to Results That Last</h2><ul>
-<li>The secret to getting results that last is to never stop making improvements.</li>
-<li>It’s remarkable what you can build if you just don’t stop.<ul>
-<li>It’s remarkable the business you can build if you don’t stop working.</li>
-<li>It’s remarkable the body you can build if you don’t stop training</li>
-<li>It’s remarkable the knowledge you can build if you don’t stop learning</li>
-<li>It’s remarkable the fortune you can build if you don’t stop saving</li>
-<li>It’s remarkable the friendships you can build if you don’t stop caring</li>
-</ul>
-</li>
-<li>Small habits don’t add up. They compound.That’s the power of atomic habits. Tiny changes. Remarkable results.</li>
-</ul>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/07/24/Atomic-Habits-4/">
-    <time datetime="2020-07-24T15:50:01.000Z" class="entry-date">
-        2020-07-24
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-Atomic-Habits-3" class="post-Atomic-Habits-3 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/23/Atomic-Habits-3/">Atomic Habits - 3</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/23/Atomic-Habits-3/" data-id="ckcz04yd30000lze2g6cz1o1c" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h1 id="HOW-TO-BREAK-A-BAD-HABIT"><a href="#HOW-TO-BREAK-A-BAD-HABIT" class="headerlink" title="HOW TO BREAK A BAD HABIT"></a>HOW TO BREAK A BAD HABIT</h1><h2 id="Make-It-Invisible"><a href="#Make-It-Invisible" class="headerlink" title="Make It Invisible"></a>Make It Invisible</h2><ul>
-<li>Reduce exposure. Remove the cues of your bad habits from your environment.<br><code>If you can’t seem to get any work done, leave your phone in another room for a few hours.</code></li>
-</ul>
-<h2 id="Make-It-Unattractive"><a href="#Make-It-Unattractive" class="headerlink" title="Make It Unattractive"></a>Make It Unattractive</h2><ul>
-<li>Reframe your mindset. Highlight the benefits of avoiding your bad habits.<br><code>Exercise. Many people associate exercise with being a challenging task that drains energy and wears you down. You can just as easily view it as a way to develop skills and build you up. Instead of telling yourself “I need to go run in the morning,” say “It’s time to build endurance and get fast.”</code></li>
-</ul>
-<h2 id="Make-It-Difficult"><a href="#Make-It-Difficult" class="headerlink" title="Make It Difficult"></a>Make It Difficult</h2><ul>
-<li><p>Increase friction. Increase the number of steps between you and your bad habits.<br><code>If you’re playing too many video games, unplug the console and put it in a closet after each use.</code></p>
-</li>
-<li><p>Use a commitment device. Restrict your future choices to the ones that benefit you.<br><code>A commitment device is a choice you make in the present that controls your actions in the future.</code><br><code>You can reduce overeating by purchasing food in individual packages rather than in bulk size.</code><br><code>If you’re excited about the business you want to start, email an entrepreneur you respect and set up a consulting call. When the time comes to act, the only way to bail is to cancel the meeting,whichrequires effort and may cost money.</code></p>
-</li>
-</ul>
-<h2 id="Make-It-Unsatisfying"><a href="#Make-It-Unsatisfying" class="headerlink" title="Make It Unsatisfying"></a>Make It Unsatisfying</h2><ul>
-<li><p>Get an accountability partner. Ask someone to watch your behavior.</p>
-</li>
-<li><p>Create a habit contract. Make the costs of your bad habits public and painful.</p>
-</li>
-</ul>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/07/23/Atomic-Habits-3/">
-    <time datetime="2020-07-23T15:48:49.000Z" class="entry-date">
-        2020-07-23
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -848,6 +814,14 @@
       <ul>
         
           <li>
+            <a href="/2020/08/24/Multiple-Regression/">Multiple Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/24/Evaluate-Regression-Model-Performance/">Evaluate Regression Model Performance</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/23/Robust-Regression/">Robust Regression</a>
           </li>
         
@@ -859,14 +833,6 @@
             <a href="/2020/08/07/The-Load-Less-Travelled/">The Load Less Travelled</a>
           </li>
         
-          <li>
-            <a href="/2020/08/02/Nonviolent-Communication/">非暴力沟通</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/30/talk/">说话的技巧</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -876,7 +842,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -885,7 +851,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Atomic-Habits/" style="font-size: 16px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 20px;">Books</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 12px;">Machine Learning</a> <a href="/tags/Meditation/" style="font-size: 12px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 14px;">Morning Habits</a> <a href="/tags/Photography/" style="font-size: 18px;">Photography</a> <a href="/tags/Robust-Regression/" style="font-size: 10px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 12px;">Tech</a> <a href="/tags/Technology/" style="font-size: 12px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 14px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
+      <a href="/tags/Atomic-Habits/" style="font-size: 16px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 20px;">Books</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 16px;">Machine Learning</a> <a href="/tags/Meditation/" style="font-size: 12px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 14px;">Morning Habits</a> <a href="/tags/Multiple-Regression/" style="font-size: 10px;">Multiple Regression</a> <a href="/tags/Photography/" style="font-size: 18px;">Photography</a> <a href="/tags/Robust-Regression/" style="font-size: 12px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 16px;">Tech</a> <a href="/tags/Technology/" style="font-size: 12px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 14px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
     </div>
   </aside>
 

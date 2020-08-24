@@ -4,11 +4,7 @@
   <meta charset="utf-8">
   
   
-  <meta name="description" content="突然被一个老同学感动到了，在物欲横流的世界中，真的很幸运能交到这么一群能无私给予我帮助的朋友。
-
-不擅长表达感激的我，只能偷偷把这些感动记录下来。同时也提醒自己要一直做一个诚实守信，也能给别人带来温暖的人。
-
-Good friends are like good wine, they get bet" />
+  <meta name="description" content="Split data into training data and test data123456789df[:] &amp;#x3D; np.nan_to_num(df)&amp;#x2F;&amp;#x2F;Replace NaN with zero and infinity with large finite num" />
   
 
   
@@ -17,19 +13,21 @@ Good friends are like good wine, they get bet" />
   
   
   
-  <title>心情笔记 | Tiny Changes, Remarkable Results</title>
+  <title>Evaluate Regression Model Performance | Tiny Changes, Remarkable Results</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="突然被一个老同学感动到了，在物欲横流的世界中，真的很幸运能交到这么一群能无私给予我帮助的朋友。  不擅长表达感激的我，只能偷偷把这些感动记录下来。同时也提醒自己要一直做一个诚实守信，也能给别人带来温暖的人。  Good friends are like good wine, they get better with age.">
+  <meta name="description" content="Split data into training data and test data123456789df[:] &#x3D; np.nan_to_num(df)&#x2F;&#x2F;Replace NaN with zero and infinity with large finite numbersfrom sklearn.model_selection import train_test">
 <meta property="og:type" content="article">
-<meta property="og:title" content="心情笔记">
-<meta property="og:url" content="http://yoursite.com/2020/07/28/suibi-1/index.html">
+<meta property="og:title" content="Evaluate Regression Model Performance">
+<meta property="og:url" content="http://yoursite.com/2020/08/24/Evaluate-Regression-Model-Performance/index.html">
 <meta property="og:site_name" content="Tiny Changes, Remarkable Results">
-<meta property="og:description" content="突然被一个老同学感动到了，在物欲横流的世界中，真的很幸运能交到这么一群能无私给予我帮助的朋友。  不擅长表达感激的我，只能偷偷把这些感动记录下来。同时也提醒自己要一直做一个诚实守信，也能给别人带来温暖的人。  Good friends are like good wine, they get better with age.">
+<meta property="og:description" content="Split data into training data and test data123456789df[:] &#x3D; np.nan_to_num(df)&#x2F;&#x2F;Replace NaN with zero and infinity with large finite numbersfrom sklearn.model_selection import train_test">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-28T14:17:41.000Z">
-<meta property="article:modified_time" content="2020-07-28T14:30:17.242Z">
+<meta property="article:published_time" content="2020-08-24T13:41:30.000Z">
+<meta property="article:modified_time" content="2020-08-24T14:25:38.612Z">
 <meta property="article:author" content="Zou Xuan">
-<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="Robust Regression">
 <meta name="twitter:card" content="summary">
   
   
@@ -73,7 +71,7 @@ Good friends are like good wine, they get bet" />
 </header>
 
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-suibi-1" class="post-suibi-1 post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-Evaluate-Regression-Model-Performance" class="post-Evaluate-Regression-Model-Performance post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -81,25 +79,39 @@ Good friends are like good wine, they get bet" />
         
   
     <h1 class="entry-title article-title">
-      心情笔记
+      Evaluate Regression Model Performance
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/28/suibi-1/" data-id="ckd61f18x0000rly39j1h8ihv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/24/Evaluate-Regression-Model-Performance/" data-id="cke8ljv6w0000xcy34rc89chn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <ul>
-<li><p>突然被一个老同学感动到了，在物欲横流的世界中，真的很幸运能交到这么一群能无私给予我帮助的朋友。</p>
+        <h2 id="Split-data-into-training-data-and-test-data"><a href="#Split-data-into-training-data-and-test-data" class="headerlink" title="Split data into training data and test data"></a>Split data into training data and test data</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df[:] &#x3D; np.nan_to_num(df)&#x2F;&#x2F;Replace NaN with zero and infinity with large finite numbers</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">X&#x3D;df.iloc[:,:-1].values</span><br><span class="line">y&#x3D;df[&#39;MEDV&#39;].values</span><br><span class="line">X_train,X_test,y_train,y_test&#x3D;train_test_split(X,y,test_size&#x3D;0.2,random_state&#x3D;0)</span><br><span class="line">lr&#x3D;LinearRegression()</span><br><span class="line">lr.fit(X_train,y_train)</span><br><span class="line">y_train_pred&#x3D;lr.predict(X_train)</span><br><span class="line">y_test_pred&#x3D;lr.predict(X_test)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Method-1-Residual-Analysis"><a href="#Method-1-Residual-Analysis" class="headerlink" title="Method 1: Residual Analysis"></a>Method 1: Residual Analysis</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize&#x3D;(12,8))</span><br><span class="line">plt.scatter(y_train_pred,y_train_pred - y_train,c&#x3D;&#39;blue&#39;,marker&#x3D;&#39;o&#39;,label&#x3D;&#39;Training data&#39;)</span><br><span class="line">plt.scatter(y_test_pred,y_test_pred-y_test,c&#x3D;&#39;orange&#39;, marker&#x3D;&#39;*&#39;, label&#x3D;&#39;Test data&#39;)</span><br><span class="line">plt.xlabel(&#39;Predicted values&#39;)</span><br><span class="line">plt.ylabel(&#39;Resudials&#39;)</span><br><span class="line">plt.legend(loc&#x3D;&#39;upper left&#39;)</span><br><span class="line">plt.hlines(y&#x3D;0,xmin&#x3D;-10, xmax&#x3D;50,lw&#x3D;2,color&#x3D;&#39;k&#39;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Method-2-Mean-Squared-Error-MSE-The-lower-the-number-the-better"><a href="#Method-2-Mean-Squared-Error-MSE-The-lower-the-number-the-better" class="headerlink" title="Method 2: Mean Squared Error (MSE), The lower the number the better"></a>Method 2: Mean Squared Error (MSE), The lower the number the better</h2><ul>
+<li>MSE=(SUM(y_real-y_predict)^2)/n ———-n is the number of y values</li>
+<li>The average value of the Sums of Squared Error cost function</li>
+<li>Useful for comparing different regression models</li>
+<li>For tuning parameters via a grid search and corss-validation<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import mean_squared_error</span><br><span class="line">mean_squared_error(y_train,y_train_pred)</span><br><span class="line">mean_squared_error(y_test,y_test_pred)</span><br></pre></td></tr></table></figure>
+
 </li>
-<li><p>不擅长表达感激的我，只能偷偷把这些感动记录下来。同时也提醒自己要一直做一个诚实守信，也能给别人带来温暖的人。</p>
-</li>
-<li><p>Good friends are like good wine, they get better with age.</p>
+</ul>
+<h2 id="Method-3-Coefficient-of-Determination-R-2-The-higher-the-number-the-better"><a href="#Method-3-Coefficient-of-Determination-R-2-The-higher-the-number-the-better" class="headerlink" title="Method 3: Coefficient of Determination R^2, The higher the number the better"></a>Method 3: Coefficient of Determination R^2, The higher the number the better</h2><ul>
+<li>R^2 = 1- SSE/SST</li>
+<li>SSE: Sum of squared errors</li>
+<li>SST: Total sum of squares<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import r2_score</span><br><span class="line">r2_score(y_train,y_train_pred)</span><br><span class="line">r2_score(y_test,y_test_pred)</span><br></pre></td></tr></table></figure>
+
+
+
+
 </li>
 </ul>
 
@@ -107,15 +119,15 @@ Good friends are like good wine, they get bet" />
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/28/suibi-1/">
-    <time datetime="2020-07-28T14:17:41.000Z" class="entry-date">
-        2020-07-28
+    <a href="/2020/08/24/Evaluate-Regression-Model-Performance/">
+    <time datetime="2020-08-24T13:41:30.000Z" class="entry-date">
+        2020-08-24
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
 
     </footer>
 </article>
@@ -125,10 +137,10 @@ Good friends are like good wine, they get bet" />
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
     
-        <span class="nav-previous"><a href="/2020/07/30/talk/" rel="prev"><span class="meta-nav">←</span> 说话的技巧</a></span>
+        <span class="nav-previous"><a href="/2020/08/24/Multiple-Regression/" rel="prev"><span class="meta-nav">←</span> Multiple Regression</a></span>
     
     
-        <span class="nav-next"><a href="/2020/07/26/Fear-Setting/" rel="next">Fear Setting <span class="meta-nav">→</span></a></span>
+        <span class="nav-next"><a href="/2020/08/23/Robust-Regression/" rel="next">Robust Regression <span class="meta-nav">→</span></a></span>
     
 </nav><!-- .nav-single -->
 

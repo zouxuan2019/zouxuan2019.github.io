@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   
   
-  <meta name="description" content="突然被一个老同学感动到了，在物欲横流的世界中，真的很幸运能交到这么一群能无私给予我帮助的朋友。
+  <meta name="description" content="Difference between Simple Linear Regression
+Simple Linear Regression y=β0+β1X
+Multiple Linear Regression y=β0+β1X1+β2X2+…
 
-不擅长表达感激的我，只能偷偷把这些感动记录下来。同时也提醒自己要一直做一个诚实守信，也能给别人带来温暖的人。
-
-Good friends are like good wine, they get bet" />
+Steps with example boston d" />
   
 
   
@@ -17,19 +17,21 @@ Good friends are like good wine, they get bet" />
   
   
   
-  <title>心情笔记 | Tiny Changes, Remarkable Results</title>
+  <title>Multiple Regression | Tiny Changes, Remarkable Results</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="突然被一个老同学感动到了，在物欲横流的世界中，真的很幸运能交到这么一群能无私给予我帮助的朋友。  不擅长表达感激的我，只能偷偷把这些感动记录下来。同时也提醒自己要一直做一个诚实守信，也能给别人带来温暖的人。  Good friends are like good wine, they get better with age.">
+  <meta name="description" content="Difference between Simple Linear Regression Simple Linear Regression y&#x3D;β0+β1X Multiple Linear Regression y&#x3D;β0+β1X1+β2X2+…  Steps with example boston dataset import libraries 1234567import numpy as npi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="心情笔记">
-<meta property="og:url" content="http://yoursite.com/2020/07/28/suibi-1/index.html">
+<meta property="og:title" content="Multiple Regression">
+<meta property="og:url" content="http://yoursite.com/2020/08/24/Multiple-Regression/index.html">
 <meta property="og:site_name" content="Tiny Changes, Remarkable Results">
-<meta property="og:description" content="突然被一个老同学感动到了，在物欲横流的世界中，真的很幸运能交到这么一群能无私给予我帮助的朋友。  不擅长表达感激的我，只能偷偷把这些感动记录下来。同时也提醒自己要一直做一个诚实守信，也能给别人带来温暖的人。  Good friends are like good wine, they get better with age.">
+<meta property="og:description" content="Difference between Simple Linear Regression Simple Linear Regression y&#x3D;β0+β1X Multiple Linear Regression y&#x3D;β0+β1X1+β2X2+…  Steps with example boston dataset import libraries 1234567import numpy as npi">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-28T14:17:41.000Z">
-<meta property="article:modified_time" content="2020-07-28T14:30:17.242Z">
+<meta property="article:published_time" content="2020-08-24T14:30:56.000Z">
+<meta property="article:modified_time" content="2020-08-24T15:37:15.794Z">
 <meta property="article:author" content="Zou Xuan">
-<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="Multiple Regression">
 <meta name="twitter:card" content="summary">
   
   
@@ -73,7 +75,7 @@ Good friends are like good wine, they get bet" />
 </header>
 
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-suibi-1" class="post-suibi-1 post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-Multiple-Regression" class="post-Multiple-Regression post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -81,41 +83,49 @@ Good friends are like good wine, they get bet" />
         
   
     <h1 class="entry-title article-title">
-      心情笔记
+      Multiple Regression
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/28/suibi-1/" data-id="ckd61f18x0000rly39j1h8ihv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/24/Multiple-Regression/" data-id="cke8p9zuf0000iry3156agtme" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <ul>
-<li><p>突然被一个老同学感动到了，在物欲横流的世界中，真的很幸运能交到这么一群能无私给予我帮助的朋友。</p>
-</li>
-<li><p>不擅长表达感激的我，只能偷偷把这些感动记录下来。同时也提醒自己要一直做一个诚实守信，也能给别人带来温暖的人。</p>
-</li>
-<li><p>Good friends are like good wine, they get better with age.</p>
-</li>
+        <h2 id="Difference-between-Simple-Linear-Regression"><a href="#Difference-between-Simple-Linear-Regression" class="headerlink" title="Difference between Simple Linear Regression"></a>Difference between Simple Linear Regression</h2><ul>
+<li>Simple Linear Regression y=β0+β1X</li>
+<li>Multiple Linear Regression y=β0+β1X1+β2X2+…</li>
+</ul>
+<h2 id="Steps-with-example-boston-dataset"><a href="#Steps-with-example-boston-dataset" class="headerlink" title="Steps with example boston dataset"></a>Steps with example boston dataset</h2><ul>
+<li><p>import libraries</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">import seaborn as sns</span><br><span class="line">import sklearn</span><br><span class="line">import sys</span><br></pre></td></tr></table></figure></li>
+<li><p>Load boston dataset directly from scikit learn</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.datasets import load_boston</span><br><span class="line">boston_data &#x3D; load_boston()</span><br><span class="line">df&#x3D;pd.DataFrame(boston_data.data, columns&#x3D;boston_data.feature_names)</span><br><span class="line">df.head()</span><br><span class="line">df.shape</span><br><span class="line">X&#x3D;df</span><br><span class="line">y&#x3D;boston_data.target</span><br><span class="line">y</span><br></pre></td></tr></table></figure></li>
+<li><p>Statsmodels</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">No module named &#39;statsmodels&#39;</span><br><span class="line">import statsmodels.formula.api as smf</span><br><span class="line">X_constant&#x3D; sm.add_constant(X) </span><br><span class="line">pd.DataFrame(X_constant)</span><br><span class="line">model&#x3D;sm.OLS(y,X_constant)</span><br><span class="line">lr&#x3D;model.fit()</span><br><span class="line">lr.summary()</span><br></pre></td></tr></table></figure>
+<p>Note: 1)if P&gt;|t| in the summary is less than 5%(0.05), we take that feature as significant</p>
+<pre><code>2)We need to add a constant term to allow statsmodel api to calculate the bias/intercepts</code></pre></li>
+<li><p>statsmodels.formula.api</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#39;y ~ CRIM+ZN&#39;</span><br><span class="line">form_lr&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B + LSTAT&#39;, data&#x3D;df)</span><br><span class="line">mlr&#x3D; form_lr.fit()</span><br><span class="line">mlr.summary()</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/28/suibi-1/">
-    <time datetime="2020-07-28T14:17:41.000Z" class="entry-date">
-        2020-07-28
+    <a href="/2020/08/24/Multiple-Regression/">
+    <time datetime="2020-08-24T14:30:56.000Z" class="entry-date">
+        2020-08-24
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
 
     </footer>
 </article>
@@ -125,10 +135,8 @@ Good friends are like good wine, they get bet" />
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
     
-        <span class="nav-previous"><a href="/2020/07/30/talk/" rel="prev"><span class="meta-nav">←</span> 说话的技巧</a></span>
     
-    
-        <span class="nav-next"><a href="/2020/07/26/Fear-Setting/" rel="next">Fear Setting <span class="meta-nav">→</span></a></span>
+        <span class="nav-next"><a href="/2020/08/24/Evaluate-Regression-Model-Performance/" rel="next">Evaluate Regression Model Performance <span class="meta-nav">→</span></a></span>
     
 </nav><!-- .nav-single -->
 
