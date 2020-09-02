@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Definitions
+Agent: The RL algorithm that learns from trial and error
+Environment: The world through which the agent moves
+Action(A): All the possible " />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>Reinforcement Learning | Tiny Changes, Remarkable Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Definitions Agent: The RL algorithm that learns from trial and error Environment: The world through which the agent moves Action(A): All the possible steps that the agent can take State(S): Current co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reinforcement Learning">
+<meta property="og:url" content="http://yoursite.com/2020/08/31/Reinforcement-Learning/index.html">
+<meta property="og:site_name" content="Tiny Changes, Remarkable Results">
+<meta property="og:description" content="Definitions Agent: The RL algorithm that learns from trial and error Environment: The world through which the agent moves Action(A): All the possible steps that the agent can take State(S): Current co">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-31T01:39:55.000Z">
+<meta property="article:modified_time" content="2020-08-31T03:51:54.010Z">
+<meta property="article:author" content="Zou Xuan">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Tech">
+<meta property="article:tag" content="Reinforcement Learning">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Tiny Changes, Remarkable Results" rel="home">Tiny Changes, Remarkable Results</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-Reinforcement-Learning" class="post-Reinforcement-Learning post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      Reinforcement Learning
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/31/Reinforcement-Learning/" data-id="ckehzkvmg000c0zy3fo1b5sk1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h2><ul>
+<li>Agent: The RL algorithm that learns from trial and error</li>
+<li>Environment: The world through which the agent moves</li>
+<li>Action(A): All the possible steps that the agent can take</li>
+<li>State(S): Current condition returned by the environment</li>
+<li>Reward(R): An instant return from the environment to appraise the last action</li>
+<li>Policy(π): The approach that the agent uses to determine the next action based on the current state</li>
+<li>Value(V): The expected long-term return with discount, as opposed to the short-term reward R</li>
+<li>Action-value(Q): This similar to Value, except, it takes an extra parameter, the current action (A)<h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts:"></a>Concepts:</h2></li>
+<li>Reward maximization: Reward maximization theory states that, a RL agent must be trained in such a way that, he takes the best action so that the reward is maximum.</li>
+<li>Exploratin &amp; Exploitation: Exploitation is about using the already known exploited information to heighten the rewards. Exploration is about exploring and captureing more information about an environment.<h2 id="Markov-Decision-Process"><a href="#Markov-Decision-Process" class="headerlink" title="Markov Decision Process"></a>Markov Decision Process</h2>The mathematical approach for mapping a solution in reinforcement learning is called Markov Decision Process(MDP)<br>The following parameters are used to attain a solution:</li>
+<li>Set of actions, A</li>
+<li>Set of states, S</li>
+<li>Reward, R</li>
+<li>Policy, π</li>
+<li>Value, V<br>Example : Find the shortest path between A and D with minumum possible cost.<br>In this problem,</li>
+<li>Set of states are denoted by nodes i.e.{A,B,C,D}</li>
+<li>Action is to traverse from one node to another {A-&gt;B, C-&gt;D}</li>
+<li>Reward is the cost represented by each edge</li>
+<li>Policy is the path taken to reach the destination {A-&gt;C-&gt;D}<h2 id="Q-Learning"><a href="#Q-Learning" class="headerlink" title="Q - Learning"></a>Q - Learning</h2></li>
+<li>R-Matrix: The R-matrix represents the environment in which the agent will be operating, viewed in terms of the states which the agent can be in, the actions available to the agent from each state (which are generally viewed as moves to other states) and the rewards received for arriving at a state. The agent does not know the whole R-matrix; all it can see are the moves immediately available to it.</li>
+<li>Q-Matrix:The Q-matrix represents the agent’s accumulated knowledge about its environment. It has the same structure as the R-matrix, but at the outset all the values in it are 0 (because it hasn’t learned anything yet). All it knows is that it wants to maximise its rewards. So, the agent sets off exploring its world, and after each move it updates it’s Q-matrix with what it has learned. This is done using the following equation:<h2 id="Q-Learning-Algorithm"><a href="#Q-Learning-Algorithm" class="headerlink" title="Q - Learning Algorithm"></a>Q - Learning Algorithm</h2><ol>
+<li>Set the gamma parameter, and environment rewards in matrix R</li>
+<li>Initialize matrix Q to zero</li>
+<li>Select a random initial state</li>
+<li>Set initial state = current state</li>
+<li>Select one among all possible actions for the current state</li>
+<li>Using this possible action, consider going to the next state</li>
+<li>Get maximum Q value for this next state based on all possible actions</li>
+<li>Compute: Q(state,action)= R(state,action) + Gamma * Max[Q(next state, all actions)]</li>
+<li>Repeat above steps until current state = goal state</li>
+</ol>
+</li>
+</ul>
+<h2 id="Code-Example"><a href="#Code-Example" class="headerlink" title="Code Example"></a>Code Example</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"># R matrix</span><br><span class="line">R&#x3D; np.matrix([[-1,-1,-1,-1,0,-1],</span><br><span class="line">[-1,-1,-1,0,-1,100],</span><br><span class="line">[-1,-1,-1,0,-1,-1],</span><br><span class="line">[-1,0,0,-1,0,-1],</span><br><span class="line">[-1,0,0,-1,-1,100],</span><br><span class="line">[-1,0,-1,-1,0,100]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"># Q matrix</span><br><span class="line">Q &#x3D; np.matrix(np.zeros([6,6]))</span><br><span class="line"></span><br><span class="line"># Gamma (learning parameter). You can play around the gamma</span><br><span class="line">gamma &#x3D; 0.8</span><br><span class="line"></span><br><span class="line"># Initial state. (Usually to be chosen at ramdom)</span><br><span class="line">initial_state &#x3D; 1</span><br><span class="line"></span><br><span class="line"># This function returns all available actions in the state given as an argument</span><br><span class="line">def available_actions(state):</span><br><span class="line">    current_state_row &#x3D; R[state,]</span><br><span class="line">    av_act &#x3D; np.where(current_state_row &gt;&#x3D; 0)[1]</span><br><span class="line">    return av_act</span><br><span class="line"># Get available actions in the current state</span><br><span class="line">available_act &#x3D; available_actions(initial_state)</span><br><span class="line"></span><br><span class="line"> # This function chooses at random whch action to be performed within the range</span><br><span class="line"> # of all the available actions.</span><br><span class="line">def sample_next_action(abailable_actions_range):</span><br><span class="line">     next_action &#x3D; int(np.random.choice(available_act, 1))</span><br><span class="line">     return next_action</span><br><span class="line"></span><br><span class="line"># Sample next action to be performed</span><br><span class="line">action &#x3D; sample_next_action(available_act)</span><br><span class="line"></span><br><span class="line"># This function updates the Q matrix according to the path selected and the Q learning algorithm</span><br><span class="line">def update(current_state, action, gamma):</span><br><span class="line">    max_index &#x3D; np.where(Q[action,] &#x3D;&#x3D; np.max(Q[action,]))[1]</span><br><span class="line">    </span><br><span class="line">    if max_index.shape[0] &gt;1 :</span><br><span class="line">        max_index &#x3D; int(np.random.choice(max_index,size&#x3D;1))</span><br><span class="line">    else:</span><br><span class="line">        max_index &#x3D; int(max_index)</span><br><span class="line">    max_value &#x3D; Q[action, max_index]     </span><br><span class="line">     # Q learning formula</span><br><span class="line">    Q[current_state, action] &#x3D; R[current_state, action] + gamma * max_value</span><br><span class="line"></span><br><span class="line"># Update Q matrix</span><br><span class="line">update(initial_state, action, gamma)</span><br><span class="line"></span><br><span class="line"># Training</span><br><span class="line"># Train over 10 000 iterations. (Re-iterate the process above)</span><br><span class="line">for i in range(10000):</span><br><span class="line">    current_state &#x3D; np.random.randint(0,int(Q.shape[0]))</span><br><span class="line">    available_act &#x3D; available_actions(current_state)</span><br><span class="line">    action &#x3D; sample_next_action(available_act)</span><br><span class="line">    update(current_state, action, gamma)</span><br><span class="line"></span><br><span class="line"># Normalize the &quot;trained&quot; Q matrix</span><br><span class="line">print(&quot;Trained Q matrix&quot;)</span><br><span class="line">print(Q&#x2F; np.max(Q) * 100)</span><br><span class="line"></span><br><span class="line">## Testing</span><br><span class="line"># goal state &#x3D; 5</span><br><span class="line"># Best sequence path starting from 2 -&gt; 2, 3, 1, 5</span><br><span class="line">current_state &#x3D; 1</span><br><span class="line">steps &#x3D; [current_state]</span><br><span class="line"></span><br><span class="line">while current_state !&#x3D; 5:</span><br><span class="line">    next_step_index &#x3D; np.where(Q[current_state,] &#x3D;&#x3D; np.max(Q[current_state,]))[1]</span><br><span class="line"></span><br><span class="line">    if next_step_index.shape[0] &gt; 1:</span><br><span class="line">       next_step_index &#x3D; int(np.random.choice(next_step_index, size&#x3D;1))</span><br><span class="line">    else:</span><br><span class="line">        next_step_index &#x3D; int(next_step_index)</span><br><span class="line">    steps.append(next_step_index)</span><br><span class="line">    current_state &#x3D; next_step_index</span><br><span class="line">    </span><br><span class="line"># Print selected sequence of steps</span><br><span class="line">print(&quot;Selected path:&quot;)</span><br><span class="line">print(steps)</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/31/Reinforcement-Learning/">
+    <time datetime="2020-08-31T01:39:55.000Z" class="entry-date">
+        2020-08-31
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reinforcement-Learning/" rel="tag">Reinforcement Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2020/08/29/Google-Colab/" rel="next">Google Colab <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/31/Reinforcement-Learning/">Reinforcement Learning</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/29/Google-Colab/">Google Colab</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/27/SGD/">SGD</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/26/Cross-Valiation/">Cross Valiation</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/26/Learning-Curve/">Learning Curve</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Feature/" rel="tag">Feature</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Colab/" rel="tag">Google Colab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning-Tools/" rel="tag">Machine Learning Tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nonlinear/" rel="tag">Nonlinear</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynominal-Regression/" rel="tag">Polynominal Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regularized-Method-for-Regression/" rel="tag">Regularized Method for Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reinforcement-Learning/" rel="tag">Reinforcement Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/Atomic-Habits/" style="font-size: 15px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 18.33px;">Books</a> <a href="/tags/Feature/" style="font-size: 10px;">Feature</a> <a href="/tags/Google-Colab/" style="font-size: 10px;">Google Colab</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Machine-Learning-Tools/" style="font-size: 10px;">Machine Learning Tools</a> <a href="/tags/Meditation/" style="font-size: 11.67px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 13.33px;">Morning Habits</a> <a href="/tags/Multiple-Regression/" style="font-size: 10px;">Multiple Regression</a> <a href="/tags/Nonlinear/" style="font-size: 10px;">Nonlinear</a> <a href="/tags/Photography/" style="font-size: 16.67px;">Photography</a> <a href="/tags/Polynominal-Regression/" style="font-size: 10px;">Polynominal Regression</a> <a href="/tags/Regression/" style="font-size: 15px;">Regression</a> <a href="/tags/Regularized-Method-for-Regression/" style="font-size: 10px;">Regularized Method for Regression</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 10px;">Reinforcement Learning</a> <a href="/tags/Robust-Regression/" style="font-size: 11.67px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 20px;">Tech</a> <a href="/tags/Technology/" style="font-size: 11.67px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 13.33px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2020 Zou Xuan
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

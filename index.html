@@ -64,7 +64,7 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
-    <article id="post-Multiple-Regression" class="post-Multiple-Regression post type-post status-publish format-standard hentry">
+    <article id="post-Reinforcement-Learning" class="post-Reinforcement-Learning post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -72,100 +72,500 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/08/24/Multiple-Regression/">Multiple Regression</a>
+      <a class="article-title" href="/2020/08/31/Reinforcement-Learning/">Reinforcement Learning</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/24/Multiple-Regression/" data-id="cke8p9zuf0000iry3156agtme" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/31/Reinforcement-Learning/" data-id="ckehzkvmg000c0zy3fo1b5sk1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h2 id="Difference-between-Simple-Linear-Regression"><a href="#Difference-between-Simple-Linear-Regression" class="headerlink" title="Difference between Simple Linear Regression"></a>Difference between Simple Linear Regression</h2><ul>
-<li>Simple Linear Regression y=β0+β1X</li>
-<li>Multiple Linear Regression y=β0+β1X1+β2X2+…</li>
+        <h2 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h2><ul>
+<li>Agent: The RL algorithm that learns from trial and error</li>
+<li>Environment: The world through which the agent moves</li>
+<li>Action(A): All the possible steps that the agent can take</li>
+<li>State(S): Current condition returned by the environment</li>
+<li>Reward(R): An instant return from the environment to appraise the last action</li>
+<li>Policy(π): The approach that the agent uses to determine the next action based on the current state</li>
+<li>Value(V): The expected long-term return with discount, as opposed to the short-term reward R</li>
+<li>Action-value(Q): This similar to Value, except, it takes an extra parameter, the current action (A)<h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts:"></a>Concepts:</h2></li>
+<li>Reward maximization: Reward maximization theory states that, a RL agent must be trained in such a way that, he takes the best action so that the reward is maximum.</li>
+<li>Exploratin &amp; Exploitation: Exploitation is about using the already known exploited information to heighten the rewards. Exploration is about exploring and captureing more information about an environment.<h2 id="Markov-Decision-Process"><a href="#Markov-Decision-Process" class="headerlink" title="Markov Decision Process"></a>Markov Decision Process</h2>The mathematical approach for mapping a solution in reinforcement learning is called Markov Decision Process(MDP)<br>The following parameters are used to attain a solution:</li>
+<li>Set of actions, A</li>
+<li>Set of states, S</li>
+<li>Reward, R</li>
+<li>Policy, π</li>
+<li>Value, V<br>Example : Find the shortest path between A and D with minumum possible cost.<br>In this problem,</li>
+<li>Set of states are denoted by nodes i.e.{A,B,C,D}</li>
+<li>Action is to traverse from one node to another {A-&gt;B, C-&gt;D}</li>
+<li>Reward is the cost represented by each edge</li>
+<li>Policy is the path taken to reach the destination {A-&gt;C-&gt;D}<h2 id="Q-Learning"><a href="#Q-Learning" class="headerlink" title="Q - Learning"></a>Q - Learning</h2></li>
+<li>R-Matrix: The R-matrix represents the environment in which the agent will be operating, viewed in terms of the states which the agent can be in, the actions available to the agent from each state (which are generally viewed as moves to other states) and the rewards received for arriving at a state. The agent does not know the whole R-matrix; all it can see are the moves immediately available to it.</li>
+<li>Q-Matrix:The Q-matrix represents the agent’s accumulated knowledge about its environment. It has the same structure as the R-matrix, but at the outset all the values in it are 0 (because it hasn’t learned anything yet). All it knows is that it wants to maximise its rewards. So, the agent sets off exploring its world, and after each move it updates it’s Q-matrix with what it has learned. This is done using the following equation:<h2 id="Q-Learning-Algorithm"><a href="#Q-Learning-Algorithm" class="headerlink" title="Q - Learning Algorithm"></a>Q - Learning Algorithm</h2><ol>
+<li>Set the gamma parameter, and environment rewards in matrix R</li>
+<li>Initialize matrix Q to zero</li>
+<li>Select a random initial state</li>
+<li>Set initial state = current state</li>
+<li>Select one among all possible actions for the current state</li>
+<li>Using this possible action, consider going to the next state</li>
+<li>Get maximum Q value for this next state based on all possible actions</li>
+<li>Compute: Q(state,action)= R(state,action) + Gamma * Max[Q(next state, all actions)]</li>
+<li>Repeat above steps until current state = goal state</li>
+</ol>
+</li>
 </ul>
-<h2 id="Steps-with-example-boston-dataset"><a href="#Steps-with-example-boston-dataset" class="headerlink" title="Steps with example boston dataset"></a>Steps with example boston dataset</h2><ul>
-<li><p>import libraries</p>
+<h2 id="Code-Example"><a href="#Code-Example" class="headerlink" title="Code Example"></a>Code Example</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"># R matrix</span><br><span class="line">R&#x3D; np.matrix([[-1,-1,-1,-1,0,-1],</span><br><span class="line">[-1,-1,-1,0,-1,100],</span><br><span class="line">[-1,-1,-1,0,-1,-1],</span><br><span class="line">[-1,0,0,-1,0,-1],</span><br><span class="line">[-1,0,0,-1,-1,100],</span><br><span class="line">[-1,0,-1,-1,0,100]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"># Q matrix</span><br><span class="line">Q &#x3D; np.matrix(np.zeros([6,6]))</span><br><span class="line"></span><br><span class="line"># Gamma (learning parameter). You can play around the gamma</span><br><span class="line">gamma &#x3D; 0.8</span><br><span class="line"></span><br><span class="line"># Initial state. (Usually to be chosen at ramdom)</span><br><span class="line">initial_state &#x3D; 1</span><br><span class="line"></span><br><span class="line"># This function returns all available actions in the state given as an argument</span><br><span class="line">def available_actions(state):</span><br><span class="line">    current_state_row &#x3D; R[state,]</span><br><span class="line">    av_act &#x3D; np.where(current_state_row &gt;&#x3D; 0)[1]</span><br><span class="line">    return av_act</span><br><span class="line"># Get available actions in the current state</span><br><span class="line">available_act &#x3D; available_actions(initial_state)</span><br><span class="line"></span><br><span class="line"> # This function chooses at random whch action to be performed within the range</span><br><span class="line"> # of all the available actions.</span><br><span class="line">def sample_next_action(abailable_actions_range):</span><br><span class="line">     next_action &#x3D; int(np.random.choice(available_act, 1))</span><br><span class="line">     return next_action</span><br><span class="line"></span><br><span class="line"># Sample next action to be performed</span><br><span class="line">action &#x3D; sample_next_action(available_act)</span><br><span class="line"></span><br><span class="line"># This function updates the Q matrix according to the path selected and the Q learning algorithm</span><br><span class="line">def update(current_state, action, gamma):</span><br><span class="line">    max_index &#x3D; np.where(Q[action,] &#x3D;&#x3D; np.max(Q[action,]))[1]</span><br><span class="line">    </span><br><span class="line">    if max_index.shape[0] &gt;1 :</span><br><span class="line">        max_index &#x3D; int(np.random.choice(max_index,size&#x3D;1))</span><br><span class="line">    else:</span><br><span class="line">        max_index &#x3D; int(max_index)</span><br><span class="line">    max_value &#x3D; Q[action, max_index]     </span><br><span class="line">     # Q learning formula</span><br><span class="line">    Q[current_state, action] &#x3D; R[current_state, action] + gamma * max_value</span><br><span class="line"></span><br><span class="line"># Update Q matrix</span><br><span class="line">update(initial_state, action, gamma)</span><br><span class="line"></span><br><span class="line"># Training</span><br><span class="line"># Train over 10 000 iterations. (Re-iterate the process above)</span><br><span class="line">for i in range(10000):</span><br><span class="line">    current_state &#x3D; np.random.randint(0,int(Q.shape[0]))</span><br><span class="line">    available_act &#x3D; available_actions(current_state)</span><br><span class="line">    action &#x3D; sample_next_action(available_act)</span><br><span class="line">    update(current_state, action, gamma)</span><br><span class="line"></span><br><span class="line"># Normalize the &quot;trained&quot; Q matrix</span><br><span class="line">print(&quot;Trained Q matrix&quot;)</span><br><span class="line">print(Q&#x2F; np.max(Q) * 100)</span><br><span class="line"></span><br><span class="line">## Testing</span><br><span class="line"># goal state &#x3D; 5</span><br><span class="line"># Best sequence path starting from 2 -&gt; 2, 3, 1, 5</span><br><span class="line">current_state &#x3D; 1</span><br><span class="line">steps &#x3D; [current_state]</span><br><span class="line"></span><br><span class="line">while current_state !&#x3D; 5:</span><br><span class="line">    next_step_index &#x3D; np.where(Q[current_state,] &#x3D;&#x3D; np.max(Q[current_state,]))[1]</span><br><span class="line"></span><br><span class="line">    if next_step_index.shape[0] &gt; 1:</span><br><span class="line">       next_step_index &#x3D; int(np.random.choice(next_step_index, size&#x3D;1))</span><br><span class="line">    else:</span><br><span class="line">        next_step_index &#x3D; int(next_step_index)</span><br><span class="line">    steps.append(next_step_index)</span><br><span class="line">    current_state &#x3D; next_step_index</span><br><span class="line">    </span><br><span class="line"># Print selected sequence of steps</span><br><span class="line">print(&quot;Selected path:&quot;)</span><br><span class="line">print(steps)</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/31/Reinforcement-Learning/">
+    <time datetime="2020-08-31T01:39:55.000Z" class="entry-date">
+        2020-08-31
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reinforcement-Learning/" rel="tag">Reinforcement Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Google-Colab" class="post-Google-Colab post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/29/Google-Colab/">Google Colab</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/29/Google-Colab/" data-id="ckehzkvm300050zy3hzrc9ktk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="Why-Google-Colab"><a href="#Why-Google-Colab" class="headerlink" title="Why Google Colab"></a>Why Google Colab</h2><p>Google Colab is a free cloud service and now it supports free GPU! You can improve your Python programming language coding skills, develop deep learning applications using popular libraries such as Keras, TensorFlow, PyTorch, and OpenCV.</p>
+<h2 id="How-to-work-with-Google-Colab"><a href="#How-to-work-with-Google-Colab" class="headerlink" title="How to work with Google Colab"></a>How to work with Google Colab</h2><ul>
+<li>Upload / Create jupiter notebook to Google Drive</li>
+<li>Upload training dataset with below code, then choose one file to upload to google drive<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from google.colab import files</span><br><span class="line">upload_file &#x3D; files.upload()</span><br></pre></td></tr></table></figure></li>
+<li>Check the file</li>
+</ul>
+<ol>
+<li>Use !ls command to check the file name and folder that holds the file<br><code>!ls</code></li>
+<li>Read data from the file<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df &#x3D; pd.read_csv(&#39;ijooz_routing_plan.csv&#39;)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/29/Google-Colab/">
+    <time datetime="2020-08-29T13:02:54.000Z" class="entry-date">
+        2020-08-29
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Google-Colab/" rel="tag">Google Colab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning-Tools/" rel="tag">Machine Learning Tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-SGD" class="post-SGD post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/27/SGD/">SGD</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/27/SGD/" data-id="ckehzkvm400070zy32m2v3ry4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/27/SGD/">
+    <time datetime="2020-08-27T00:50:45.000Z" class="entry-date">
+        2020-08-27
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Cross-Valiation" class="post-Cross-Valiation post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/26/Cross-Valiation/">Cross Valiation</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/26/Cross-Valiation/" data-id="ckehzkvlu00000zy31dsk7vtu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>A test set should still be held out for final evaluation, but the validation set isno longer needed when doing CV.</p>
+<h2 id="Hold-out-Cross-Validation"><a href="#Hold-out-Cross-Validation" class="headerlink" title="Hold out Cross Validation"></a>Hold out Cross Validation</h2><h2 id="k-fold-Cross-Validation"><a href="#k-fold-Cross-Validation" class="headerlink" title="k-fold Cross Validation"></a>k-fold Cross Validation</h2>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/26/Cross-Valiation/">
+    <time datetime="2020-08-26T14:38:39.000Z" class="entry-date">
+        2020-08-26
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Learning-Curve" class="post-Learning-Curve post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/26/Learning-Curve/">Learning Curve</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/26/Learning-Curve/" data-id="ckehzkvm100030zy3bnxv67fi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="Shows-the-validation-and-training-score-of-an-estimator-for-varying-numbers-of-training-samples"><a href="#Shows-the-validation-and-training-score-of-an-estimator-for-varying-numbers-of-training-samples" class="headerlink" title="Shows the validation and training score of an estimator for varying numbers of training samples"></a>Shows the validation and training score of an estimator for varying numbers of training samples</h2><h2 id="A-tool-to-find-out-how-much-we-benefit-from-adding-more-training-data-and-whether-the-estimator-suffers-more-from-a-variance-error-or-a-bias-error"><a href="#A-tool-to-find-out-how-much-we-benefit-from-adding-more-training-data-and-whether-the-estimator-suffers-more-from-a-variance-error-or-a-bias-error" class="headerlink" title="A tool to find out how much we benefit from adding more training data and whether the estimator suffers more from a variance error or a bias error."></a>A tool to find out how much we benefit from adding more training data and whether the estimator suffers more from a variance error or a bias error.</h2>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/26/Learning-Curve/">
+    <time datetime="2020-08-26T14:28:32.000Z" class="entry-date">
+        2020-08-26
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Variance-Bias-Trade-Off" class="post-Variance-Bias-Trade-Off post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/26/Variance-Bias-Trade-Off/">Variance-Bias Trade Off</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/26/Variance-Bias-Trade-Off/" data-id="ckehzkvmf000a0zy3a0275lqc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="Variance-tells-you-how-volatile-your-predictions-are-and-bias-tells-you-how-much-you’re-off-from-the-actual-observation-itself"><a href="#Variance-tells-you-how-volatile-your-predictions-are-and-bias-tells-you-how-much-you’re-off-from-the-actual-observation-itself" class="headerlink" title="Variance tells you how volatile your predictions are and bias tells you how much you’re off from the actual observation itself."></a>Variance tells you how volatile your predictions are and bias tells you how much you’re off from the actual observation itself.</h1>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/26/Variance-Bias-Trade-Off/">
+    <time datetime="2020-08-26T14:01:21.000Z" class="entry-date">
+        2020-08-26
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Data-Preprocessing" class="post-Data-Preprocessing post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/25/Data-Preprocessing/">Data Preprocessing</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/25/Data-Preprocessing/" data-id="ckehzkvm000010zy34rnf6aiu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="You-should-only-preprocess-your-training-data"><a href="#You-should-only-preprocess-your-training-data" class="headerlink" title="You should only preprocess your training data"></a>You should only preprocess your training data</h1><h2 id="Standarization-Mean-Removal-Variance-Scaling"><a href="#Standarization-Mean-Removal-Variance-Scaling" class="headerlink" title="Standarization / Mean Removal /Variance Scaling"></a>Standarization / Mean Removal /Variance Scaling</h2><h2 id="Min-Max-or-Scaling-Features-to-a-Range"><a href="#Min-Max-or-Scaling-Features-to-a-Range" class="headerlink" title="Min-Max or Scaling Features to a Range"></a>Min-Max or Scaling Features to a Range</h2><h2 id="MaxAbsScaler-1-1"><a href="#MaxAbsScaler-1-1" class="headerlink" title="MaxAbsScaler [-1,1]"></a>MaxAbsScaler [-1,1]</h2><h2 id="Scaling-sparce-data"><a href="#Scaling-sparce-data" class="headerlink" title="Scaling sparce data"></a>Scaling sparce data</h2><h2 id="Scaling-vs-Whitening"><a href="#Scaling-vs-Whitening" class="headerlink" title="Scaling vs Whitening"></a>Scaling vs Whitening</h2><h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><ul>
+<li>L1 normalization, Least Absolute Deviations Ensure the sum of absolute values is in 1 in each row.</li>
+<li>L2 normalization, Least squares, Ensure that the sum of squares is 1.                                  <h2 id="Binarization"><a href="#Binarization" class="headerlink" title="Binarization"></a>Binarization</h2>Setting a threadhold to get boolean values.</li>
+</ul>
+<h2 id="Encoding-categorical-features"><a href="#Encoding-categorical-features" class="headerlink" title="Encoding categorical features"></a>Encoding categorical features</h2><p>Converting categorical characters to numerical number</p>
+<h2 id="One-Hot-One-of-K-Encoding"><a href="#One-Hot-One-of-K-Encoding" class="headerlink" title="One Hot / One-of-K Encoding"></a>One Hot / One-of-K Encoding</h2><p>The process of turing a series of categorical responses into a set of binary result (0 or 1)</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/25/Data-Preprocessing/">
+    <time datetime="2020-08-25T14:53:26.000Z" class="entry-date">
+        2020-08-25
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Feature-Importance" class="post-Feature-Importance post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/25/Feature-Importance/">Feature Importance</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/25/Feature-Importance/" data-id="ckea2jqg90000amy3azvy8ca8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="Revisiting-Feature-Importance"><a href="#Revisiting-Feature-Importance" class="headerlink" title="Revisiting Feature Importance"></a>Revisiting Feature Importance</h2><ul>
+<li>Are all the features equally important?</li>
+<li>Which features are more important?</li>
+<li>Can scikit-learn help us with this?</li>
+</ul>
+<h2 id="According-to-AdaBoost"><a href="#According-to-AdaBoost" class="headerlink" title="According to AdaBoost"></a>According to AdaBoost</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ada.feature_importances_</span><br><span class="line"></span><br><span class="line">df.columns</span><br><span class="line"></span><br><span class="line">result&#x3D;pd.DataFrame(ada.feature_importances_,df.columns)</span><br><span class="line">result.columns&#x3D;[&#39;feature&#39;]</span><br><span class="line">result.sort_values(by&#x3D;&#39;feature&#39;,ascending&#x3D;False)</span><br><span class="line">result.sort_values(by&#x3D;&#39;feature&#39;,ascending&#x3D;False).plot(kind&#x3D;&#39;bar&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="According-to-Random-Forest"><a href="#According-to-Random-Forest" class="headerlink" title="According to Random Forest"></a>According to Random Forest</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">result&#x3D;pd.DataFrame(forest.feature_importances_,df.columns)</span><br><span class="line">result.columns&#x3D;[&#39;feature&#39;]</span><br><span class="line">result.sort_values(by&#x3D;&#39;feature&#39;,ascending&#x3D;False)</span><br><span class="line">result.sort_values(by&#x3D;&#39;feature&#39;,ascending&#x3D;False).plot(kind&#x3D;&#39;bar&#39;)</span><br></pre></td></tr></table></figure>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/25/Feature-Importance/">
+    <time datetime="2020-08-25T14:42:59.000Z" class="entry-date">
+        2020-08-25
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Feature/" rel="tag">Feature</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Nonlinear-Relationships" class="post-Nonlinear-Relationships post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/25/Nonlinear-Relationships/">Nonlinear Relationships</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/25/Nonlinear-Relationships/" data-id="ckea1z5re0000lcy32uzchk9j" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="Data-Preparation"><a href="#Data-Preparation" class="headerlink" title="Data Preparation"></a>Data Preparation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">import seaborn as sns</span><br><span class="line">import sklearn</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">from sklearn.datasets import load_boston</span><br><span class="line">boston_data &#x3D; load_boston()</span><br><span class="line">df&#x3D;pd.DataFrame(boston_data.data, columns&#x3D;boston_data.feature_names)</span><br><span class="line">df.head()</span><br><span class="line">df.shape</span><br><span class="line">X&#x3D;df</span><br><span class="line">y&#x3D;boston_data.target</span><br></pre></td></tr></table></figure>
+<h2 id="Decision-Tree"><a href="#Decision-Tree" class="headerlink" title="Decision Tree"></a>Decision Tree</h2><p>Used for classification based machine learning, it can be used for regression base as well. A big difference between regression vs classification is that the classification is often binary, whereas regression is the numbers you dealing with are continous in nature.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.tree import DecisionTreeRegressor</span><br><span class="line">X &#x3D; df[[&#39;LSTAT&#39;]].values</span><br><span class="line">tree &#x3D; DecisionTreeRegressor(max_depth &#x3D; 5)</span><br><span class="line">tree.fit(X,y)</span><br><span class="line">sort_idx&#x3D;X.flatten().argsort()</span><br><span class="line"></span><br><span class="line">plt.figure(figsize&#x3D;(10,8));</span><br><span class="line">plt.scatter(X[sort_idx],y[sort_idx]);</span><br><span class="line">plt.plot(X[sort_idx],tree.predict(X[sort_idx]),color&#x3D;&#39;k&#39;)</span><br><span class="line"></span><br><span class="line">plt.xlabel(&#39;LSTAT&#39;)</span><br><span class="line">plt.ylabel(&#39;MEDV&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Random-Forest"><a href="#Random-Forest" class="headerlink" title="Random Forest"></a>Random Forest</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">from sklearn.metrics import mean_squared_error,r2_score</span><br><span class="line">X &#x3D; df.values</span><br><span class="line">X_train,X_test,y_train,y_test&#x3D;train_test_split(X,y,test_size&#x3D;0.3,random_state&#x3D;42)</span><br><span class="line">from sklearn.ensemble import RandomForestRegressor</span><br><span class="line">forest &#x3D; RandomForestRegressor(n_estimators&#x3D;500,criterion&#x3D;&#39;mse&#39;,random_state&#x3D;42,n_jobs&#x3D;-1)</span><br><span class="line">forest.fit(X_train,y_train)</span><br><span class="line">y_train_pred&#x3D;forest.predict(X_train)</span><br><span class="line">y_test_pred&#x3D;forest.predict(X_test)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(&quot;MSE train:&#123;0:.4f&#125;,test:&#123;1:.4f&#125;&quot;.\</span><br><span class="line">       format(mean_squared_error(y_train,y_train_pred),</span><br><span class="line">       mean_squared_error(y_test,y_test_pred)))</span><br><span class="line"></span><br><span class="line">print(&quot;R^2 train:&#123;0:.4f&#125;,test:&#123;1:.4f&#125;&quot;.\</span><br><span class="line">       format(r2_score(y_train,y_train_pred),</span><br><span class="line">       r2_score(y_test,y_test_pred)))</span><br></pre></td></tr></table></figure>
+
+<h2 id="AdaBoost-Side-check-for-random-forest-it-useful-to-help-you-to-evaluate-random-forest-especially-if-both-model-are-deteriorating-concurrently-it-tells-you-that-something-is-changing-underlying-data"><a href="#AdaBoost-Side-check-for-random-forest-it-useful-to-help-you-to-evaluate-random-forest-especially-if-both-model-are-deteriorating-concurrently-it-tells-you-that-something-is-changing-underlying-data" class="headerlink" title="AdaBoost, Side check for random forest.it useful to help you to evaluate random forest especially if both model are deteriorating concurrently , it tells you that something is changing underlying data"></a>AdaBoost, Side check for random forest.it useful to help you to evaluate random forest especially if both model are deteriorating concurrently , it tells you that something is changing underlying data</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.ensemble import AdaBoostRegressor</span><br><span class="line">ada &#x3D; AdaBoostRegressor(DecisionTreeRegressor(max_depth &#x3D; 4),</span><br><span class="line">n_estimators&#x3D;500,random_state&#x3D;42)</span><br><span class="line">ada.fit(X_train,y_train)</span><br><span class="line">y_train_pred&#x3D;ada.predict(X_train)</span><br><span class="line">y_test_pred&#x3D;forest.predict(X_test)</span><br><span class="line"></span><br><span class="line">print(&quot;MSE train:&#123;0:.4f&#125;,test:&#123;1:.4f&#125;&quot;.\</span><br><span class="line">       format(mean_squared_error(y_train,y_train_pred),</span><br><span class="line">       mean_squared_error(y_test,y_test_pred)))</span><br><span class="line"></span><br><span class="line">print(&quot;R^2 train:&#123;0:.4f&#125;,test:&#123;1:.4f&#125;&quot;.\</span><br><span class="line">       format(r2_score(y_train,y_train_pred),</span><br><span class="line">       r2_score(y_test,y_test_pred)))</span><br></pre></td></tr></table></figure>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/25/Nonlinear-Relationships/">
+    <time datetime="2020-08-25T14:03:52.000Z" class="entry-date">
+        2020-08-25
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nonlinear/" rel="tag">Nonlinear</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-Polynominal-Regression" class="post-Polynominal-Regression post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/25/Polynominal-Regression/">Polynominal Regression</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/25/Polynominal-Regression/" data-id="ckea0oewa000036y3dmd7caxw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="Polynominal-Regression-extending-linear-models-with-basic-functions"><a href="#Polynominal-Regression-extending-linear-models-with-basic-functions" class="headerlink" title="Polynominal Regression: extending linear models with basic functions"></a>Polynominal Regression: extending linear models with basic functions</h1><h2 id="It-is-particular-useful-when-you’re-dealing-with-no-linear-relationship"><a href="#It-is-particular-useful-when-you’re-dealing-with-no-linear-relationship" class="headerlink" title="It is particular useful when you’re dealing with no-linear relationship."></a>It is particular useful when you’re dealing with no-linear relationship.</h2><ul>
+<li><p>Import library</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">import seaborn as sns</span><br><span class="line">import sklearn</span><br><span class="line">import sys</span><br></pre></td></tr></table></figure></li>
-<li><p>Load boston dataset directly from scikit learn</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.datasets import load_boston</span><br><span class="line">boston_data &#x3D; load_boston()</span><br><span class="line">df&#x3D;pd.DataFrame(boston_data.data, columns&#x3D;boston_data.feature_names)</span><br><span class="line">df.head()</span><br><span class="line">df.shape</span><br><span class="line">X&#x3D;df</span><br><span class="line">y&#x3D;boston_data.target</span><br><span class="line">y</span><br></pre></td></tr></table></figure></li>
-<li><p>Statsmodels</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">No module named &#39;statsmodels&#39;</span><br><span class="line">import statsmodels.formula.api as smf</span><br><span class="line">X_constant&#x3D; sm.add_constant(X) </span><br><span class="line">pd.DataFrame(X_constant)</span><br><span class="line">model&#x3D;sm.OLS(y,X_constant)</span><br><span class="line">lr&#x3D;model.fit()</span><br><span class="line">lr.summary()</span><br></pre></td></tr></table></figure>
-<p>Note: 1)if P&gt;|t| in the summary is less than 5%(0.05), we take that feature as significant</p>
-<pre><code>2)We need to add a constant term to allow statsmodel api to calculate the bias/intercepts</code></pre></li>
-<li><p>statsmodels.formula.api</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#39;y ~ CRIM+ZN&#39;</span><br><span class="line">form_lr&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B + LSTAT&#39;, data&#x3D;df)</span><br><span class="line">mlr&#x3D; form_lr.fit()</span><br><span class="line">mlr.summary()</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/08/24/Multiple-Regression/">
-    <time datetime="2020-08-24T14:30:56.000Z" class="entry-date">
-        2020-08-24
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-Evaluate-Regression-Model-Performance" class="post-Evaluate-Regression-Model-Performance post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/08/24/Evaluate-Regression-Model-Performance/">Evaluate Regression Model Performance</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/24/Evaluate-Regression-Model-Performance/" data-id="cke8ljv6w0000xcy34rc89chn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="Split-data-into-training-data-and-test-data"><a href="#Split-data-into-training-data-and-test-data" class="headerlink" title="Split data into training data and test data"></a>Split data into training data and test data</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df[:] &#x3D; np.nan_to_num(df)&#x2F;&#x2F;Replace NaN with zero and infinity with large finite numbers</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">X&#x3D;df.iloc[:,:-1].values</span><br><span class="line">y&#x3D;df[&#39;MEDV&#39;].values</span><br><span class="line">X_train,X_test,y_train,y_test&#x3D;train_test_split(X,y,test_size&#x3D;0.2,random_state&#x3D;0)</span><br><span class="line">lr&#x3D;LinearRegression()</span><br><span class="line">lr.fit(X_train,y_train)</span><br><span class="line">y_train_pred&#x3D;lr.predict(X_train)</span><br><span class="line">y_test_pred&#x3D;lr.predict(X_test)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Method-1-Residual-Analysis"><a href="#Method-1-Residual-Analysis" class="headerlink" title="Method 1: Residual Analysis"></a>Method 1: Residual Analysis</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize&#x3D;(12,8))</span><br><span class="line">plt.scatter(y_train_pred,y_train_pred - y_train,c&#x3D;&#39;blue&#39;,marker&#x3D;&#39;o&#39;,label&#x3D;&#39;Training data&#39;)</span><br><span class="line">plt.scatter(y_test_pred,y_test_pred-y_test,c&#x3D;&#39;orange&#39;, marker&#x3D;&#39;*&#39;, label&#x3D;&#39;Test data&#39;)</span><br><span class="line">plt.xlabel(&#39;Predicted values&#39;)</span><br><span class="line">plt.ylabel(&#39;Resudials&#39;)</span><br><span class="line">plt.legend(loc&#x3D;&#39;upper left&#39;)</span><br><span class="line">plt.hlines(y&#x3D;0,xmin&#x3D;-10, xmax&#x3D;50,lw&#x3D;2,color&#x3D;&#39;k&#39;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<h2 id="Method-2-Mean-Squared-Error-MSE-The-lower-the-number-the-better"><a href="#Method-2-Mean-Squared-Error-MSE-The-lower-the-number-the-better" class="headerlink" title="Method 2: Mean Squared Error (MSE), The lower the number the better"></a>Method 2: Mean Squared Error (MSE), The lower the number the better</h2><ul>
-<li>MSE=(SUM(y_real-y_predict)^2)/n ———-n is the number of y values</li>
-<li>The average value of the Sums of Squared Error cost function</li>
-<li>Useful for comparing different regression models</li>
-<li>For tuning parameters via a grid search and corss-validation<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import mean_squared_error</span><br><span class="line">mean_squared_error(y_train,y_train_pred)</span><br><span class="line">mean_squared_error(y_test,y_test_pred)</span><br></pre></td></tr></table></figure>
-
+<li><p>Data preparation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(42)</span><br><span class="line">n_samples &#x3D; 100</span><br><span class="line">X &#x3D; np.linspace(0,10,100)</span><br><span class="line">rng &#x3D; np.random.randn(n_samples)*100</span><br><span class="line">y &#x3D; X**3 + rng + 100</span><br><span class="line">plt.figure(figsize&#x3D;(10,8));</span><br><span class="line">plt.scatter(X,y);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from sklearn.metrics import r2_score</span><br></pre></td></tr></table></figure></li>
+<li><p>Linear Regression</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">model &#x3D; LinearRegression()</span><br><span class="line">model.fit(X.reshape(-1,1),y)</span><br><span class="line">model_pred &#x3D; model.predict(X.reshape(-1,1))</span><br><span class="line">plt.figure(figsize&#x3D;(10,8))</span><br><span class="line">plt.scatter(X,y)</span><br><span class="line">plt.plot(X,model_pred)</span><br><span class="line">print(r2_score(y,model_pred))</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<h2 id="Method-3-Coefficient-of-Determination-R-2-The-higher-the-number-the-better"><a href="#Method-3-Coefficient-of-Determination-R-2-The-higher-the-number-the-better" class="headerlink" title="Method 3: Coefficient of Determination R^2, The higher the number the better"></a>Method 3: Coefficient of Determination R^2, The higher the number the better</h2><ul>
-<li>R^2 = 1- SSE/SST</li>
-<li>SSE: Sum of squared errors</li>
-<li>SST: Total sum of squares<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import r2_score</span><br><span class="line">r2_score(y_train,y_train_pred)</span><br><span class="line">r2_score(y_test,y_test_pred)</span><br></pre></td></tr></table></figure>
-
-
-
-
+<li><p>Polynominal Regression : degree = 2 means X to the power of 2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import PolynomialFeatures</span><br><span class="line">poly_reg &#x3D; PolynomialFeatures(degree&#x3D;2)</span><br><span class="line">X_poly &#x3D; poly_reg.fit_transform(X.reshape(-1,1))</span><br><span class="line">lin_reg_2 &#x3D; LinearRegression()</span><br><span class="line">lin_reg_2.fit(X_poly,y.reshape(-1,1))</span><br><span class="line">y_pred &#x3D; lin_reg_2.predict(X_poly)</span><br><span class="line"></span><br><span class="line">plt.figure(figsize&#x3D;(10,8))</span><br><span class="line">plt.scatter(X,y)</span><br><span class="line">plt.plot(X,y_pred)</span><br><span class="line">print(r2_score(y,y_pred))</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -173,608 +573,15 @@
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/08/24/Evaluate-Regression-Model-Performance/">
-    <time datetime="2020-08-24T13:41:30.000Z" class="entry-date">
-        2020-08-24
+    <a href="/2020/08/25/Polynominal-Regression/">
+    <time datetime="2020-08-25T13:20:21.000Z" class="entry-date">
+        2020-08-25
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-Robust-Regression" class="post-Robust-Regression post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/08/23/Robust-Regression/">Robust Regression</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/23/Robust-Regression/" data-id="cke78i8o00000ujy38i82d7tl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="RANSAC-RANdom-SAmple-Consensus-algorithm"><a href="#RANSAC-RANdom-SAmple-Consensus-algorithm" class="headerlink" title="RANSAC (RANdom SAmple Consensus) algorithm."></a>RANSAC (RANdom SAmple Consensus) algorithm.</h2><h2 id="Why-Robust-Regression"><a href="#Why-Robust-Regression" class="headerlink" title="Why Robust Regression"></a>Why Robust Regression</h2><ul>
-<li>Linear Regression have tendency to be affected substantially by outliers, the real world has a lot of outliers on the major impact on the accuracy of your machine learning algorithm prediction.</li>
-<li>The purpose of machine learning is to predict most of the real world condition correctly</li>
-</ul>
-<h2 id="Code-Example"><a href="#Code-Example" class="headerlink" title="Code Example"></a>Code Example</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">df&#x3D;pd.read_csv(&quot;data&#x2F;&#x2F;HousingData.csv&quot;)</span><br><span class="line">pd.options.display.float_format &#x3D; &quot;&#123;:,.2f&#125;&quot;.format</span><br><span class="line">from sklearn.linear_model import RANSACRegressor</span><br><span class="line">X&#x3D;df[&#39;RM&#39;].values.reshape(-1,1)</span><br><span class="line">y&#x3D;df[&#39;MEDV&#39;].values</span><br><span class="line">ransac &#x3D; RANSACRegressor()</span><br><span class="line">ransac.fit(X,y)</span><br><span class="line">inlier_mask &#x3D; ransac.inlier_mask_</span><br><span class="line">outlier_mask &#x3D; np.logical_not(inlier_mask)</span><br><span class="line">np.arange(3,10,1)</span><br><span class="line">line_X &#x3D; np.arange(3,10,1)</span><br><span class="line">line_y_ransac&#x3D;ransac.predict(line_X.reshape(-1,1))</span><br><span class="line">ransac.estimator_.coef_</span><br><span class="line">ransac.estimator_.intercept_</span><br><span class="line"></span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">sns.set(style&#x3D;&#39;darkgrid&#39;,context&#x3D;&#39;notebook&#39;)</span><br><span class="line">plt.figure(figsize&#x3D;(12,8))</span><br><span class="line">plt.scatter(X[inlier_mask],y[inlier_mask],c&#x3D;&#39;blue&#39;,marker&#x3D;&#39;o&#39;,label&#x3D;&#39;Inliers&#39;)</span><br><span class="line">plt.scatter(y[outlier_mask],y[outlier_mask],c&#x3D;&#39;brown&#39;,marker&#x3D;&#39;s&#39;,label&#x3D;&#39;Outliers&#39;)</span><br><span class="line">plt.plot(line_X,line_y_ransac,color&#x3D;&#39;red&#39;)</span><br><span class="line">plt.xlabel(&#39;Average number of rooms per dwelling&#39;)</span><br><span class="line">plt.ylabel(&#39;Median value of owner-occupied homes in $1000\&#39;s&#39;);</span><br><span class="line">plt.legend(loc&#x3D;&#39;upper left&#39;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/08/23/Robust-Regression/">
-    <time datetime="2020-08-23T14:48:34.000Z" class="entry-date">
-        2020-08-23
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-Five-Steps-Machine-Learning-Process" class="post-Five-Steps-Machine-Learning-Process post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/08/23/Five-Steps-Machine-Learning-Process/">Five Steps Machine Learning Process</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/23/Five-Steps-Machine-Learning-Process/" data-id="cke764m9c0000ddy33ompdbeh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h3 id="Most-commonly-the-steps-in-using-the-Scikit-Learn-estimator-API-are-as-follows"><a href="#Most-commonly-the-steps-in-using-the-Scikit-Learn-estimator-API-are-as-follows" class="headerlink" title="Most commonly, the steps in using the Scikit-Learn estimator API are as follows"></a>Most commonly, the steps in using the Scikit-Learn estimator API are as follows</h3><ul>
-<li><p>Choose a class of model by importing the appropriate estimator class from Scikit-Learn.<br><code>from sklearn.linear_model import LinearRegression</code></p>
-</li>
-<li><p>Choose Model hyperparameters by instantiating this class with desired values.<br><code>model= LinearRegression()</code></p>
-</li>
-<li><p>Arrange data into a features matrix and target vector.<br><code>x=df[&#39;RM&#39;].values.reshape(-1,1)</code><br><code>y=df[&#39;MEDV&#39;].values</code></p>
-</li>
-<li><p>Fit the model to your data by calling the fit() method of the model instance.<br><code>model.fit(x,y)</code></p>
-</li>
-<li><p>Apply the Model to new data:<br> For supervised learning, often we predict labels for unknown data using the predict() method.<br> For unsupervised learning, we often transform or infer properties of the data using the transform() or predict() method.<br><code>model.predict(np.array([7]).reshape(1,-1))</code></p>
-</li>
-<li><p>Reference<br><code>https://arxiv.org/abs/1309.0238</code></p>
-</li>
-<li><p>Put everthing together</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">df&#x3D;pd.read_csv(&quot;data&#x2F;&#x2F;HousingData.csv&quot;)</span><br><span class="line">pd.options.display.float_format &#x3D; &quot;&#123;:,.2f&#125;&quot;.format</span><br><span class="line">model &#x3D; LinearRegression()</span><br><span class="line">X&#x3D;df[&#39;RM&#39;].values.reshape(-1,1)</span><br><span class="line">y&#x3D;df[&#39;MEDV&#39;].values</span><br><span class="line">model.fit(X,y)</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">plt.figure(figsize&#x3D;(12,10))</span><br><span class="line">sns.regplot(X,y);</span><br><span class="line">plt.xlabel(&#39;RM&#39;);</span><br><span class="line">plt.ylabel(&#39;Median value of owner-occupied homes in $1000\&#39;s&#39;);</span><br><span class="line">plt.show(); </span><br><span class="line">model.predict(np.array([5]).reshape(-1,1))</span><br></pre></td></tr></table></figure>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/08/23/Five-Steps-Machine-Learning-Process/">
-    <time datetime="2020-08-23T04:51:59.000Z" class="entry-date">
-        2020-08-23
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-The-Load-Less-Travelled" class="post-The-Load-Less-Travelled post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/08/07/The-Load-Less-Travelled/">The Load Less Travelled</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/07/The-Load-Less-Travelled/" data-id="ckdkesyph0000k4e2gwus0gx3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h1 id="Lesson-Learnt"><a href="#Lesson-Learnt" class="headerlink" title="Lesson Learnt"></a>Lesson Learnt</h1><ul>
-<li>Lesson 1: Accept responsibility for your problems</li>
-<li>Lesson 2: Love is seperateness</li>
-<li>Lesson 3: Honesty is freedom</li>
-</ul>
-<h2 id="Discipline"><a href="#Discipline" class="headerlink" title="Discipline"></a>Discipline</h2><ul>
-<li>Life is difficult</li>
-<li>Problems will arise, people are suffing and try to avoid to deal with problems<ul>
-<li>Delayed gratification（自律：推迟满足感）</li>
-<li>Accept responsibility for your problems (自律：承担责任)</li>
-<li>Dedication to the truth（忠于事实）</li>
-<li>Balancing（保持平衡，承担该承担的责任，也不能把所有责任压在自己身上）</li>
-</ul>
-</li>
-</ul>
-<h2 id="Love"><a href="#Love" class="headerlink" title="Love"></a>Love</h2><ul>
-<li>The will to extend oneself for your own or anothers spritual growth</li>
-<li>True Love vs Passion<ul>
-<li>Love is not dependency</li>
-<li>Commitment</li>
-<li>Attention</li>
-<li>Courage</li>
-<li>Balance</li>
-</ul>
-</li>
-</ul>
-<h2 id="Religion"><a href="#Religion" class="headerlink" title="Religion"></a>Religion</h2><ul>
-<li>Broader Definition<ul>
-<li>Personal Views</li>
-<li>Religious Ideas</li>
-</ul>
-</li>
-<li>Hinder or promote spiritual growth</li>
-<li>Science VS Religion</li>
-</ul>
-<h2 id="Grace"><a href="#Grace" class="headerlink" title="Grace"></a>Grace</h2><ul>
-<li>Universal force</li>
-<li>Miracles</li>
-</ul>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/08/07/The-Load-Less-Travelled/">
-    <time datetime="2020-08-07T15:14:55.000Z" class="entry-date">
-        2020-08-07
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-Nonviolent-Communication" class="post-Nonviolent-Communication post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/08/02/Nonviolent-Communication/">非暴力沟通</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/02/Nonviolent-Communication/" data-id="ckdd7nci20000pwy3fa0p8hy0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="生气的理由-需求没有被满足"><a href="#生气的理由-需求没有被满足" class="headerlink" title="生气的理由 - 需求没有被满足"></a>生气的理由 - 需求没有被满足</h2><ul>
-<li>你生气别人骂你时，是因为你需要尊重</li>
-<li>你生气别人拿你东西，是因为你想保护自己的财产</li>
-<li>你生气孩子不听话，是因为你希望把孩子培养好</li>
-<li>你生气朋友欺骗你，是因为你需要情感归属</li>
-</ul>
-<h2 id="正确的做法：提出自己的需求，和对方商量解决办法"><a href="#正确的做法：提出自己的需求，和对方商量解决办法" class="headerlink" title="正确的做法：提出自己的需求，和对方商量解决办法"></a>正确的做法：提出自己的需求，和对方商量解决办法</h2><ul>
-<li>当母亲看到儿子把脏衣服乱扔<ul>
-<li>暴力沟通：常见的反应是：你怎么总是这么邋遢，你就不能放到洗衣机里吗？</li>
-<li>非暴力沟通：我看到沙发上有两只脏袜子，我不太高兴，因为我看重整洁。你是否愿意把袜子放进洗衣机？</li>
-</ul>
-</li>
-</ul>
-<h2 id="非暴力沟通的四个步骤"><a href="#非暴力沟通的四个步骤" class="headerlink" title="非暴力沟通的四个步骤"></a>非暴力沟通的四个步骤</h2><ul>
-<li><p>观察：不带评论的观察，描述行为而非攻击人格</p>
-<ul>
-<li>从事实入手</li>
-<li>不能言过其实</li>
-<li>一次只说一件事</li>
-<li>不要推测意图</li>
-<li>不要随意评价</li>
-</ul>
-</li>
-<li><p>感受 ： 情绪源于自身</p>
-<ul>
-<li>遇到不满意的事<ul>
-<li>分析自己的想法：“还有没有别的解释？”</li>
-<li>关注自身：“我的什么需要没有被满足？”“ta 的行为违背了我的什么价值观？”</li>
-<li>第一人称表述：“我感到。。。，因为我。。。“ 比如，我感到生气而非你惹怒我了。我有点失望而非你让我失望</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>需要</p>
-<ul>
-<li>从正面说：告诉 ta 需要做什么而不是不做什么</li>
-<li>比如妻子对丈夫说：我不想让你去参加球赛，丈夫可能会感到莫名其妙。妻子应该直接说出来：我希望你周末能陪陪我和孩子</li>
-<li>如果你对家人说：不要再喝酒了。估计很难起到作用。你可以这样说：你能否告诉我喝酒满足了你的什么需要？有没有其他方式可以满足那些需要？</li>
-</ul>
-</li>
-<li><p>请求 ： 提出明确的请求</p>
-<ul>
-<li>改变做法：比如进我房间请敲门。而不是改变性格：请考虑周到些</li>
-<li>请求不是命令：利用恐惧和内疚来实现自己的目的，那就不是请求，而是命令。<ul>
-<li>恐惧：你再这样我生气了。</li>
-<li>内疚： 如果你真的爱我，就应该陪着我。</li>
-</ul>
-</li>
-<li>请求和命令的区别在于：你有没有考虑别人的感受。<ul>
-<li>提出命令的人，如果听到别人的拒绝，会感到生气，想要指责对方。</li>
-<li>提出请求的人，如果被别人拒绝，他会考虑对方有什么困难。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/08/02/Nonviolent-Communication/">
-    <time datetime="2020-08-02T14:22:06.000Z" class="entry-date">
-        2020-08-02
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-talk" class="post-talk post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/30/talk/">说话的技巧</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/30/talk/" data-id="ckd8z05w20000sge2e9hd9r6u" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h1 id="与人交谈不只是技术，也是态度。技术需要的是练习，态度需要的是体会"><a href="#与人交谈不只是技术，也是态度。技术需要的是练习，态度需要的是体会" class="headerlink" title="与人交谈不只是技术，也是态度。技术需要的是练习，态度需要的是体会"></a>与人交谈不只是技术，也是态度。技术需要的是练习，态度需要的是体会</h1><h2 id="不说话有时比说话还重要"><a href="#不说话有时比说话还重要" class="headerlink" title="不说话有时比说话还重要"></a>不说话有时比说话还重要</h2><ul>
-<li>即使意见不同，也尊重对方有发言权</li>
-<li>倾听，尊重 就是为对方打开自己的耳朵</li>
-<li>人生的智慧往往来自于聆听，而后悔则大多来自于发言</li>
-</ul>
-<h2 id="跟对方产生共感"><a href="#跟对方产生共感" class="headerlink" title="跟对方产生共感"></a>跟对方产生共感</h2><ul>
-<li>用同理心去感受对方经历的事</li>
-<li>用同理心而不是同情心</li>
-</ul>
-<h2 id="适时的回应对方"><a href="#适时的回应对方" class="headerlink" title="适时的回应对方"></a>适时的回应对方</h2><ul>
-<li>用回应来创造彼此的互动</li>
-<li>说一次、听两次、附和三次</li>
-<li>看着对方的眼睛去听 ta 说话，聊天过程中可以点头，如果有好奇的地方可以用“真的吗？然后呢？诶，这个有趣！”来表达感受到的情绪</li>
-</ul>
-<h2 id="把话讲的更简短，让结构更简洁"><a href="#把话讲的更简短，让结构更简洁" class="headerlink" title="把话讲的更简短，让结构更简洁"></a>把话讲的更简短，让结构更简洁</h2><ul>
-<li>上课时的心得报告</li>
-<li>会议中的发言和简报</li>
-<li>说之前把重点写下来</li>
-</ul>
-<h2 id="给人建议时要对事不对人，不批评"><a href="#给人建议时要对事不对人，不批评" class="headerlink" title="给人建议时要对事不对人，不批评"></a>给人建议时要对事不对人，不批评</h2><ul>
-<li>不要批评别人</li>
-</ul>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/07/30/talk/">
-    <time datetime="2020-07-30T15:30:15.000Z" class="entry-date">
-        2020-07-30
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-suibi-1" class="post-suibi-1 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/28/suibi-1/">心情笔记</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/28/suibi-1/" data-id="ckd61f18x0000rly39j1h8ihv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <ul>
-<li><p>突然被一个老同学感动到了，在物欲横流的世界中，真的很幸运能交到这么一群能无私给予我帮助的朋友。</p>
-</li>
-<li><p>不擅长表达感激的我，只能偷偷把这些感动记录下来。同时也提醒自己要一直做一个诚实守信，也能给别人带来温暖的人。</p>
-</li>
-<li><p>Good friends are like good wine, they get better with age.</p>
-</li>
-</ul>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/07/28/suibi-1/">
-    <time datetime="2020-07-28T14:17:41.000Z" class="entry-date">
-        2020-07-28
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-Fear-Setting" class="post-Fear-Setting post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/26/Fear-Setting/">Fear Setting</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/26/Fear-Setting/" data-id="ckd38x22e0000tie25onf8z55" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h1 id="Write-down-something-that-you-wanted-to-do-all-the-time-but-didn’t-take-action"><a href="#Write-down-something-that-you-wanted-to-do-all-the-time-but-didn’t-take-action" class="headerlink" title="Write down something that you wanted to do all the time but didn’t take action"></a>Write down something that you wanted to do all the time but didn’t take action</h1><h2 id="First-Page"><a href="#First-Page" class="headerlink" title="First Page:"></a>First Page:</h2><ul>
-<li>What if I …? (Start a Vacation/Asking Someone Out/Asking a Promotion/Quiting a job/Start a Company/Start Something Excited)</li>
-<li>Define : Writing down all the worse things you can imagine if you take that step</li>
-<li>Prevent : What could I do to prevent each of them</li>
-<li>Repair : What could I do to repair the damage</li>
-</ul>
-<h2 id="Second-Page"><a href="#Second-Page" class="headerlink" title="Second Page"></a>Second Page</h2><ul>
-<li>What might be the benefits of an attempt or partial success?</li>
-</ul>
-<h2 id="Third-Page"><a href="#Third-Page" class="headerlink" title="Third Page"></a>Third Page</h2><ul>
-<li>The cost of inaction?</li>
-</ul>
-<h2 id="Easy-Choices-Hard-Life-Hard-Choices-Easy-Life"><a href="#Easy-Choices-Hard-Life-Hard-Choices-Easy-Life" class="headerlink" title="Easy Choices, Hard Life. Hard Choices, Easy Life"></a>Easy Choices, Hard Life. Hard Choices, Easy Life</h2><h2 id="Remenber-There-is-Only-one-life"><a href="#Remenber-There-is-Only-one-life" class="headerlink" title="Remenber, There is Only one life"></a>Remenber, There is Only one life</h2>
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/07/26/Fear-Setting/">
-    <time datetime="2020-07-26T15:18:40.000Z" class="entry-date">
-        2020-07-26
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-Kotin-Unit-Test-Best-Practice" class="post-Kotin-Unit-Test-Best-Practice post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/25/Kotin-Unit-Test-Best-Practice/">Best Practices for Testing in Kotlin</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/25/Kotin-Unit-Test-Best-Practice/" data-id="ckd1uufc50000ace2a4k6evbm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="Junit5"><a href="#Junit5" class="headerlink" title="Junit5"></a>Junit5</h2><ul>
-<li><p>Use @TestInstance(Lifecycle.PER_CLASS) to avoid the need for static members, which are non-idiomatic and cumbersome in Kotlin.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@TestInstance(TestInstance.LifeCycle.PER_CLASS)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Instead of annotating every class with @TestInstance() you can change the default lifecycle with the junit-platform.properties file.</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">src&#x2F;test&#x2F;resources junit-platform.properties:</span><br><span class="line">junit.jupiter.testinstance.lifecycle.default&#x3D;per_class</span><br></pre></td></tr></table></figure>
-
-<h2 id="Naming-Grouping"><a href="#Naming-Grouping" class="headerlink" title="Naming, Grouping"></a>Naming, Grouping</h2><ul>
-<li><p>Put the test method names in backticks and use spaces.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Test fun &#96;Dividing by zero should throw the DivideByZeroException&#96;()</span><br><span class="line"> &#123;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Use @Nested inner classes to group the test methods.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Nested class MyTestClass()&#123; &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="Libraries"><a href="#Libraries" class="headerlink" title="Libraries"></a>Libraries</h2><ul>
-<li>There are so many test libraries. Check them out and make up your own mind.<table>
-<thead>
-<tr>
-<th align="left">Language</th>
-<th align="center">Test Frameworks</th>
-<th align="right">Mocking</th>
-<th align="right">Assertions</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Kotlin</td>
-<td align="center">Spek<br> KotlinTest</td>
-<td align="right">Mockito-Kotlin<br><strong>MockK</strong></td>
-<td align="right">Strikt<br>Atrium<br>HamKrest<br>Expekt<br>Kluent/AssertK</td>
-</tr>
-<tr>
-<td align="left">Java</td>
-<td align="center"><strong>Junit5</strong></td>
-<td align="right"></td>
-<td align="right"><strong>AssertJ</strong></td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<h2 id="Mock-Handling"><a href="#Mock-Handling" class="headerlink" title="Mock Handling"></a>Mock Handling</h2><ul>
-<li>Don’t recreate, reset! Create mocks only once and reset them in a @BeforeEach. This way, you can use val fields and achieve better performance.</li>
-<li>Use MockK to create mocks in a convenient and idiomatic way. It can also mock final classes by default.</li>
-</ul>
-<h2 id="Data-Classes"><a href="#Data-Classes" class="headerlink" title="Data Classes"></a>Data Classes</h2><ul>
-<li><p>Create a reference object and compare it directly with the actual object using an equality assertion.</p>
-<ul>
-<li>Single Element</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">assertThat(acutalData)</span><br><span class="line">.isEqualToIgnoringGivenFields(expectedData,&quot;id&quot;)</span><br><span class="line">assertThat(acutalData)</span><br><span class="line">.isEqualToComparingOnlyGivenFields(expectedData,&quot;name&quot;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Lists</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">assertThat(actualDatas)</span><br><span class="line">.usingElementComparatorIgnoringFields(&quot;id&quot;)</span><br><span class="line">.containsExacely(expectedData1,expectedData2)</span><br><span class="line">assertThat(actualDatas)</span><br><span class="line">.usingElementComparatorOnFields(&quot;name&quot;)</span><br><span class="line">.containsExacely(expectedData1,expectedData2)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Use data classes to carry the test data (input and expected output) in a @ParameterizedTest.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@ParameterizedTest</span><br><span class="line">@MethodSource(&quot;dataProviderFunction&quot;)</span><br><span class="line">fun &#96;test data&#96;(testData:TestData)&#123;</span><br><span class="line">     assertThat(testData.vaule).isEqualTo(testData.expectedToken)</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private fun dataProviderFunction()&#x3D;</span><br><span class="line">Stream.of( TestData(input&#x3D;&quot;a&quot;,expected&#x3D;Token(123,&quot;2&quot;)),</span><br><span class="line">TestData(input&#x3D;&quot;a&quot;,expected&#x3D;Token(123,&quot;2&quot;))</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="Helper-Functions"><a href="#Helper-Functions" class="headerlink" title="Helper Functions"></a>Helper Functions</h2><ul>
-<li>Write helper functions with default arguments to easily create instances with a complex structure.<ul>
-<li>Helper Function Example<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val testData&#x3D;Data(id&#x3D;1,name&#x3D;&quot;Foo&quot;,dateCreated&#x3D;Instant.now())</span><br><span class="line">fun createData(id:Int&#x3D;1, name:String&#x3D;&quot;Cat&quot;,</span><br><span class="line"> dateCreated&#x3D;Instant.ofEpochSecond(15182781893))&#123;</span><br><span class="line">return Data(id&#x3D;id, name&#x3D;name, dateCreated&#x3D;dateCreated)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Usage<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val testData&#x3D;createData()</span><br><span class="line">val testData2&#x3D;createData(id&#x3D;1,name&#x3D;&quot;Boo&quot;)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>Helper extension functions are useful to concisely create frequently used values (like Instant, UUID)</li>
-<li>Test-specific extension functions are useful to extend libraries in an idiomatic way to remove distractions in the test code.</li>
-</ul>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/07/25/Kotin-Unit-Test-Best-Practice/">
-    <time datetime="2020-07-25T14:50:33.000Z" class="entry-date">
-        2020-07-25
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Technology/" rel="tag">Technology</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Polynominal-Regression/" rel="tag">Polynominal Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Regression/" rel="tag">Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
 
     </footer>
 </article>
@@ -788,7 +595,7 @@
   
     <nav id="pagination">
       <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
       </nav>
     </nav>
   
@@ -814,23 +621,23 @@
       <ul>
         
           <li>
-            <a href="/2020/08/24/Multiple-Regression/">Multiple Regression</a>
+            <a href="/2020/08/31/Reinforcement-Learning/">Reinforcement Learning</a>
           </li>
         
           <li>
-            <a href="/2020/08/24/Evaluate-Regression-Model-Performance/">Evaluate Regression Model Performance</a>
+            <a href="/2020/08/29/Google-Colab/">Google Colab</a>
           </li>
         
           <li>
-            <a href="/2020/08/23/Robust-Regression/">Robust Regression</a>
+            <a href="/2020/08/27/SGD/">SGD</a>
           </li>
         
           <li>
-            <a href="/2020/08/23/Five-Steps-Machine-Learning-Process/">Five Steps Machine Learning Process</a>
+            <a href="/2020/08/26/Cross-Valiation/">Cross Valiation</a>
           </li>
         
           <li>
-            <a href="/2020/08/07/The-Load-Less-Travelled/">The Load Less Travelled</a>
+            <a href="/2020/08/26/Learning-Curve/">Learning Curve</a>
           </li>
         
       </ul>
@@ -842,7 +649,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Feature/" rel="tag">Feature</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Colab/" rel="tag">Google Colab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning-Tools/" rel="tag">Machine Learning Tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nonlinear/" rel="tag">Nonlinear</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynominal-Regression/" rel="tag">Polynominal Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regularized-Method-for-Regression/" rel="tag">Regularized Method for Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reinforcement-Learning/" rel="tag">Reinforcement Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -851,7 +658,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Atomic-Habits/" style="font-size: 16px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 20px;">Books</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 16px;">Machine Learning</a> <a href="/tags/Meditation/" style="font-size: 12px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 14px;">Morning Habits</a> <a href="/tags/Multiple-Regression/" style="font-size: 10px;">Multiple Regression</a> <a href="/tags/Photography/" style="font-size: 18px;">Photography</a> <a href="/tags/Robust-Regression/" style="font-size: 12px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 16px;">Tech</a> <a href="/tags/Technology/" style="font-size: 12px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 14px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
+      <a href="/tags/Atomic-Habits/" style="font-size: 15px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 18.33px;">Books</a> <a href="/tags/Feature/" style="font-size: 10px;">Feature</a> <a href="/tags/Google-Colab/" style="font-size: 10px;">Google Colab</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Machine-Learning-Tools/" style="font-size: 10px;">Machine Learning Tools</a> <a href="/tags/Meditation/" style="font-size: 11.67px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 13.33px;">Morning Habits</a> <a href="/tags/Multiple-Regression/" style="font-size: 10px;">Multiple Regression</a> <a href="/tags/Nonlinear/" style="font-size: 10px;">Nonlinear</a> <a href="/tags/Photography/" style="font-size: 16.67px;">Photography</a> <a href="/tags/Polynominal-Regression/" style="font-size: 10px;">Polynominal Regression</a> <a href="/tags/Regression/" style="font-size: 15px;">Regression</a> <a href="/tags/Regularized-Method-for-Regression/" style="font-size: 10px;">Regularized Method for Regression</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 10px;">Reinforcement Learning</a> <a href="/tags/Robust-Regression/" style="font-size: 11.67px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 20px;">Tech</a> <a href="/tags/Technology/" style="font-size: 11.67px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 13.33px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
     </div>
   </aside>
 

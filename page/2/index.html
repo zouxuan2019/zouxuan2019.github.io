@@ -64,7 +64,7 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
-    <article id="post-Atomic-Habits-4" class="post-Atomic-Habits-4 post type-post status-publish format-standard hentry">
+    <article id="post-Regularized-Method-for-Regression" class="post-Regularized-Method-for-Regression post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -72,87 +72,43 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/24/Atomic-Habits-4/">Atomic Habits - 4</a>
+      <a class="article-title" href="/2020/08/25/Regularized-Method-for-Regression/">Regularized Method for Regression</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/24/Atomic-Habits-4/" data-id="ckd0fi7so0000z6y30q6156df" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/25/Regularized-Method-for-Regression/" data-id="cke9z5hwx000087y30pgobxrd" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h2 id="How-to-Go-from-Being-Merely-Good-to-Being-Truly-Great"><a href="#How-to-Go-from-Being-Merely-Good-to-Being-Truly-Great" class="headerlink" title="How to Go from Being Merely Good to Being Truly Great"></a>How to Go from Being Merely Good to Being Truly Great</h2><ul>
-<li>The secret to maximizing your odds of success is to choose the right field of competition. (Know your strength)</li>
-<li>Play a game that favors your strengths. If you can’t find a game that favors you, create one.</li>
-<li>Habits are easier when they align with your natural abilities. Choose the habits that best suit you.</li>
-<li>Pick the right habit and progress is easy. Pick the wrong habit and life is a struggle.</li>
-<li>Genes cannot be easily changed, which means they provide a powerful advantage in favorable circumstances and a serious disadvantage in unfavorable circumstances.</li>
-<li>Genes do not eliminate the need for hard work. They clarify it. They tell us what to work hard on.</li>
-</ul>
-<h2 id="How-to-Stay-Motivated-in-Life-and-Work"><a href="#How-to-Stay-Motivated-in-Life-and-Work" class="headerlink" title="How to Stay Motivated in Life and Work"></a>How to Stay Motivated in Life and Work</h2><ul>
-<li>The Goldilocks Rule states that humans experience peak motivation when working on tasks that are right on the edge of their current abilities.</li>
-<li>The greatest threat to success is not failure but boredom.</li>
-<li>As habits become routine, they become less interesting and less satisfying. We get bored.</li>
-<li>Anyone can work hard when they feel motivated. It’s the ability to keep going when work isn’t exciting that makes the difference.</li>
-<li>Professionals stick to the schedule; amateurs let life get in the way.</li>
-</ul>
-<h2 id="The-Downside-of-Creating-Good-Habits"><a href="#The-Downside-of-Creating-Good-Habits" class="headerlink" title="The Downside of Creating Good Habits"></a>The Downside of Creating Good Habits</h2><ul>
-<li>The upside of habits is that we can do things without thinking.<br>The downside is that we stop paying attention to little errors.</li>
-<li>Habits + Deliberate Practice = Mastery</li>
-<li>Reflection and review is a process that allows you to remain conscious of your performance over time.<ul>
-<li>Perform an Annual Review,Reflect on the previous year<ul>
-<li>Count up how many books you have read</li>
-<li>How many workouts you put in</li>
-<li>How many new places you visited</li>
-<li>more…</li>
-</ul>
-</li>
-<li>Reflect on progress<ul>
-<li>What went well this year?</li>
-<li>What didn’t go so well this year?</li>
-<li>What did I learn?</li>
-</ul>
-</li>
-<li>Six months after Reflection, conduct an Integrity Report<ul>
-<li>What are the core values that drive my life and work?</li>
-<li>How am I living and working with integrity right now?</li>
-<li>How can I set a higher standard in the future?</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>The tighter we cling to an identity, the harder it becomes to grow beyond it.</li>
-</ul>
-<h2 id="Conclusion：-The-Secret-to-Results-That-Last"><a href="#Conclusion：-The-Secret-to-Results-That-Last" class="headerlink" title="Conclusion： The Secret to Results That Last"></a>Conclusion： The Secret to Results That Last</h2><ul>
-<li>The secret to getting results that last is to never stop making improvements.</li>
-<li>It’s remarkable what you can build if you just don’t stop.<ul>
-<li>It’s remarkable the business you can build if you don’t stop working.</li>
-<li>It’s remarkable the body you can build if you don’t stop training</li>
-<li>It’s remarkable the knowledge you can build if you don’t stop learning</li>
-<li>It’s remarkable the fortune you can build if you don’t stop saving</li>
-<li>It’s remarkable the friendships you can build if you don’t stop caring</li>
-</ul>
-</li>
-<li>Small habits don’t add up. They compound.That’s the power of atomic habits. Tiny changes. Remarkable results.</li>
+        <h1 id="Data-Preparation"><a href="#Data-Preparation" class="headerlink" title="Data Preparation"></a>Data Preparation</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(42)</span><br><span class="line">n_samples &#x3D; 100</span><br><span class="line">rng&#x3D;np.random.randn(n_samples)*10</span><br><span class="line">y_gen&#x3D;0.5*rng+2*np.random.randn(n_samples)</span><br></pre></td></tr></table></figure>
+<h1 id="If-there-are-a-lot-of-outliers-in-your-data-you-may-want-to-explore-more-on-below-3-regularized-regressions-They-restrict-the-actual-movement-of-the-line-so-that-it-won’t-be-badly-impacted-by-outliers"><a href="#If-there-are-a-lot-of-outliers-in-your-data-you-may-want-to-explore-more-on-below-3-regularized-regressions-They-restrict-the-actual-movement-of-the-line-so-that-it-won’t-be-badly-impacted-by-outliers" class="headerlink" title="If there are a lot of outliers in your data, you may want to explore more on below 3 regularized regressions. They restrict the actual movement of the line, so that it won’t be badly impacted by outliers"></a>If there are a lot of outliers in your data, you may want to explore more on below 3 regularized regressions. They restrict the actual movement of the line, so that it won’t be badly impacted by outliers</h1><h2 id="Ridge-Regression"><a href="#Ridge-Regression" class="headerlink" title="Ridge Regression"></a>Ridge Regression</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import Ridge</span><br><span class="line">ridge_mod&#x3D;Ridge(alpha&#x3D;0.5,normalize&#x3D;True)</span><br><span class="line">ridge_mod.fit(rng.reshape(-1,1),y_gen)</span><br><span class="line">ridge_model_pred &#x3D; ridge_mod.predict(rng.reshape(-1,1))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize&#x3D;(10,8));</span><br><span class="line">plt.scatter(rng,y_gen);</span><br><span class="line">plt.plot(rng,ridge_model_pred);</span><br><span class="line">print(&quot;Coefficient Estimate:&quot;, ridge_mod.coef_)</span><br></pre></td></tr></table></figure>
+<h2 id="LASSO-Regression"><a href="#LASSO-Regression" class="headerlink" title="LASSO Regression"></a>LASSO Regression</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import Lasso</span><br><span class="line">lasso_mod&#x3D;Lasso(alpha&#x3D;0.4,normalize&#x3D;True)</span><br><span class="line">lasso_mod.fit(rng.reshape(-1,1),y_gen)</span><br><span class="line">lasso_mod_pred &#x3D; lasso_mod.predict(rng.reshape(-1,1))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize&#x3D;(10,8));</span><br><span class="line">plt.scatter(rng,y_gen);</span><br><span class="line">plt.plot(rng,lasso_mod_pred);</span><br><span class="line">print(&quot;Coefficient Estimate:&quot;, lasso_mod.coef_)</span><br></pre></td></tr></table></figure>
+<h2 id="Elastic-Net"><a href="#Elastic-Net" class="headerlink" title="Elastic Net"></a>Elastic Net</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import ElasticNet</span><br><span class="line">en_mod&#x3D;ElasticNet(alpha&#x3D;0.02,normalize&#x3D;True)</span><br><span class="line">en_mod.fit(rng.reshape(-1,1),y_gen)</span><br><span class="line">en_mod_pred &#x3D; en_mod.predict(rng.reshape(-1,1))</span><br><span class="line"></span><br><span class="line">plt.figure(figsize&#x3D;(10,8));</span><br><span class="line">plt.scatter(rng,y_gen);</span><br><span class="line">plt.plot(rng,en_mod_pred);</span><br><span class="line">print(&quot;Coefficient Estimate:&quot;, en_mod.coef_)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Summary-When-should-I-use-Lasso-Ridge-or-Elastic-Net"><a href="#Summary-When-should-I-use-Lasso-Ridge-or-Elastic-Net" class="headerlink" title="Summary When should I use Lasso, Ridge or Elastic Net?"></a>Summary When should I use Lasso, Ridge or Elastic Net?</h2><ul>
+<li>Ridge regression : can’t zero out coefficients;You either end up including all the coefficients in the model, or none of them.</li>
+<li>LASSO:Does both parameter shrinkage and variable selection automatic?</li>
+<li>If some of your covariates are highly correlated, you may want to look at the Elastic Net instead of the LASSO.</li>
 </ul>
 
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/24/Atomic-Habits-4/">
-    <time datetime="2020-07-24T15:50:01.000Z" class="entry-date">
-        2020-07-24
+    <a href="/2020/08/25/Regularized-Method-for-Regression/">
+    <time datetime="2020-08-25T00:47:09.000Z" class="entry-date">
+        2020-08-25
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Regression/" rel="tag">Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Regularized-Method-for-Regression/" rel="tag">Regularized Method for Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
 
     </footer>
 </article>
@@ -163,7 +119,7 @@
 
 
   
-    <article id="post-Atomic-Habits-3" class="post-Atomic-Habits-3 post type-post status-publish format-standard hentry">
+    <article id="post-Multiple-Regression" class="post-Multiple-Regression post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -171,51 +127,95 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/23/Atomic-Habits-3/">Atomic Habits - 3</a>
+      <a class="article-title" href="/2020/08/24/Multiple-Regression/">Multiple Regression</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/23/Atomic-Habits-3/" data-id="ckcz04yd30000lze2g6cz1o1c" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/24/Multiple-Regression/" data-id="cke8p9zuf0000iry3156agtme" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h1 id="HOW-TO-BREAK-A-BAD-HABIT"><a href="#HOW-TO-BREAK-A-BAD-HABIT" class="headerlink" title="HOW TO BREAK A BAD HABIT"></a>HOW TO BREAK A BAD HABIT</h1><h2 id="Make-It-Invisible"><a href="#Make-It-Invisible" class="headerlink" title="Make It Invisible"></a>Make It Invisible</h2><ul>
-<li>Reduce exposure. Remove the cues of your bad habits from your environment.<br><code>If you can’t seem to get any work done, leave your phone in another room for a few hours.</code></li>
+        <h2 id="Difference-between-Simple-Linear-Regression"><a href="#Difference-between-Simple-Linear-Regression" class="headerlink" title="Difference between Simple Linear Regression"></a>Difference between Simple Linear Regression</h2><ul>
+<li>Simple Linear Regression y=β0+β1X</li>
+<li>Multiple Linear Regression y=β0+β1X1+β2X2+…</li>
 </ul>
-<h2 id="Make-It-Unattractive"><a href="#Make-It-Unattractive" class="headerlink" title="Make It Unattractive"></a>Make It Unattractive</h2><ul>
-<li>Reframe your mindset. Highlight the benefits of avoiding your bad habits.<br><code>Exercise. Many people associate exercise with being a challenging task that drains energy and wears you down. You can just as easily view it as a way to develop skills and build you up. Instead of telling yourself “I need to go run in the morning,” say “It’s time to build endurance and get fast.”</code></li>
+<h2 id="Steps-with-example-boston-dataset"><a href="#Steps-with-example-boston-dataset" class="headerlink" title="Steps with example boston dataset"></a>Steps with example boston dataset</h2><ul>
+<li><p>import libraries</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">import seaborn as sns</span><br><span class="line">import sklearn</span><br><span class="line">import sys</span><br></pre></td></tr></table></figure></li>
+<li><p>Load boston dataset directly from scikit learn</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.datasets import load_boston</span><br><span class="line">boston_data &#x3D; load_boston()</span><br><span class="line">df&#x3D;pd.DataFrame(boston_data.data, columns&#x3D;boston_data.feature_names)</span><br><span class="line">df.head()</span><br><span class="line">df.shape</span><br><span class="line">X&#x3D;df</span><br><span class="line">y&#x3D;boston_data.target</span><br><span class="line">y</span><br></pre></td></tr></table></figure></li>
+<li><p>Statsmodels</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">No module named &#39;statsmodels&#39;</span><br><span class="line">import statsmodels.formula.api as smf</span><br><span class="line">X_constant&#x3D; sm.add_constant(X) </span><br><span class="line">pd.DataFrame(X_constant)</span><br><span class="line">model&#x3D;sm.OLS(y,X_constant)</span><br><span class="line">lr&#x3D;model.fit()</span><br><span class="line">lr.summary()</span><br></pre></td></tr></table></figure>
+<p>Note:<br>1)if P&gt;|t| in the summary is less than 5%(0.05), we take that feature as significant<br>2)We need to add a constant term to allow statsmodel api to calculate the bias/intercepts</p>
+</li>
+<li><p>statsmodels.formula.api  to specify the columns that you want to fit in the model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">form_lr&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B + LSTAT&#39;, data&#x3D;df)</span><br><span class="line">mlr&#x3D; form_lr.fit()</span><br><span class="line">mlr.summary()</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<h2 id="Make-It-Difficult"><a href="#Make-It-Difficult" class="headerlink" title="Make It Difficult"></a>Make It Difficult</h2><ul>
-<li><p>Increase friction. Increase the number of steps between you and your bad habits.<br><code>If you’re playing too many video games, unplug the console and put it in a closet after each use.</code></p>
+<p>Note there was a warning: The condition number is large, 1.51e+04. This might indicate that there are<br>strong multicollinearity or other numerical problems. Which means there are two features that are strongly corelated to each other.<br>Use diagnostic tool to identify collinearity between predictors:</p>
+<h2 id="Correlation-Matrix"><a href="#Correlation-Matrix" class="headerlink" title="Correlation Matrix"></a>Correlation Matrix</h2><ol>
+<li><p>Get all the correlation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pd.options.display.float_format &#x3D; &#39;&#123;:,.2f&#125;&#39;.format</span><br><span class="line">corr_matrix&#x3D;df.corr()</span><br><span class="line">corr_matrix</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Use a commitment device. Restrict your future choices to the ones that benefit you.<br><code>A commitment device is a choice you make in the present that controls your actions in the future.</code><br><code>You can reduce overeating by purchasing food in individual packages rather than in bulk size.</code><br><code>If you’re excited about the business you want to start, email an entrepreneur you respect and set up a consulting call. When the time comes to act, the only way to bail is to cancel the meeting,whichrequires effort and may cost money.</code></p>
+<li><p>Mask some data if the abs correlation is less than 0.6</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">corr_matrix[np.abs(corr_matrix)&lt;0.6]&#x3D;0</span><br><span class="line">corr_matrix</span><br></pre></td></tr></table></figure></li>
+<li><p>Vistulize by showing the result with heatmap</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize&#x3D;(16,10))</span><br><span class="line">sns.heatmap(corr_matrix,annot&#x3D;True,cmap&#x3D;&#39;YlGnBu&#39;)</span><br><span class="line">plt.show</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Detecting-Collinearity-with-Eigenvectors-Use-small-eigenvalues-and-large-eigenvectors"><a href="#Detecting-Collinearity-with-Eigenvectors-Use-small-eigenvalues-and-large-eigenvectors" class="headerlink" title="Detecting Collinearity with Eigenvectors : Use small eigenvalues and large eigenvectors"></a>Detecting Collinearity with Eigenvectors : Use small eigenvalues and large eigenvectors</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pd.options.display.float_format &#x3D; &#39;&#123;:,.4f&#125;&#39;.format</span><br><span class="line">eigenvalues, eigenvectors &#x3D; np.linalg.eig(df.corr())</span><br><span class="line">pd.Series(eigenvalues).sort_values()</span><br></pre></td></tr></table></figure>
+<p>Result</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">8    0.0635</span><br><span class="line">10   0.1693</span><br><span class="line">11   0.1860</span><br><span class="line">12   0.2202</span><br><span class="line">9    0.2769</span><br><span class="line">7    0.3961</span><br><span class="line">6    0.5354</span><br><span class="line">5    0.6574</span><br><span class="line">4    0.8348</span><br><span class="line">3    0.8576</span><br><span class="line">2    1.2426</span><br><span class="line">1    1.4333</span><br><span class="line">0    6.1268</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>Note that index 8, eigenvalue of 0.0635, is near to zero or very small compared to the others, Small value represents presence of collinearity. Check what is exactly number 8<br><code>np.abs(pd.Series(eigenvectors[:,8])).sort_values(ascending=False)</code><br>Result</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">9    0.7202</span><br><span class="line">8    0.6335</span><br><span class="line">2    0.2511</span><br><span class="line">1    0.0809</span><br><span class="line">0    0.0460</span><br><span class="line">5    0.0456</span><br><span class="line">4    0.0436</span><br><span class="line">6    0.0386</span><br><span class="line">3    0.0359</span><br><span class="line">12   0.0244</span><br><span class="line">10   0.0234</span><br><span class="line">7    0.0183</span><br><span class="line">11   0.0045</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>Note that index 9,8,2 have very hight loading when compared against the rest<br><code>print(df.columns[2],df.columns[8],df.columns[9]</code><br>These are the factors that are causing multicollinearity problem.<br>Result<br><code>INDUS RAD TAX</code></p>
+<h2 id="Revisiting-Feature-Importance-and-Extractions"><a href="#Revisiting-Feature-Importance-and-Extractions" class="headerlink" title="Revisiting Feature Importance and Extractions"></a>Revisiting Feature Importance and Extractions</h2><p>Check :</p>
+<ol>
+<li><p>Direction of the coefficient</p>
+</li>
+<li><p>Impact of the variable / factor on the model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.hist(df[&#39;TAX&#39;])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.hist(df[&#39;NOX&#39;])</span><br></pre></td></tr></table></figure>
+<p>Note the range of TAX goes from 200 ~ 700, the NOX ranges from 0.4 ~ 1, the scale of these are really quite large, it will supress the coefficient itself, which is not an ideal situation.<br>What we can do is</p>
+<ul>
+<li>Standardise Variable to Identity Key Feature(s)<br>Get coefficient values by feature name<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">model&#x3D;LinearRegression()</span><br><span class="line">model.fit(X,y)</span><br><span class="line">result&#x3D;pd.DataFrame(list(zip(model.coef_,df.columns)),columns&#x3D;[&#39;coefficient&#39;,&#39;name&#39;]).set_index(&#39;name&#39;)</span><br><span class="line">np.abs(result).sort_values(by&#x3D;&#39;coefficient&#39;,ascending&#x3D;False)</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h2 id="Make-It-Unsatisfying"><a href="#Make-It-Unsatisfying" class="headerlink" title="Make It Unsatisfying"></a>Make It Unsatisfying</h2><ul>
-<li><p>Get an accountability partner. Ask someone to watch your behavior.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import StandardScaler</span><br><span class="line">from sklearn.pipeline import make_pipeline</span><br><span class="line">scaler&#x3D; StandardScaler()</span><br><span class="line">standard_coefficient_linear_reg&#x3D;make_pipeline(scaler,model)</span><br><span class="line"></span><br><span class="line">standard_coefficient_linear_reg.fit(X,y)</span><br><span class="line">result&#x3D;pd.DataFrame(list(zip(standard_coefficient_linear_reg.steps[1][1].coef_,df.columns)),</span><br><span class="line">columns&#x3D;[&#39;coefficient&#39;,&#39;name&#39;]).set_index(&#39;name&#39;)</span><br><span class="line">np.abs(result).sort_values(by&#x3D;&#39;coefficient&#39;,ascending&#x3D;False)</span><br></pre></td></tr></table></figure>
+
 </li>
-<li><p>Create a habit contract. Make the costs of your bad habits public and painful.</p>
+</ol>
+<h2 id="Use-R-2-to-Identify-Key-Features"><a href="#Use-R-2-to-Identify-Key-Features" class="headerlink" title="Use R^2 to Identify Key Features"></a>Use R^2 to Identify Key Features</h2><ul>
+<li>Compare R^2 of model against R^2 of model without a feature</li>
+<li>A significant change in R^2 signify the importance of the feature<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import r2_score</span><br><span class="line">linear_reg&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B + LSTAT&#39;, data&#x3D;df)</span><br><span class="line">benchmark&#x3D; linear_reg.fit()</span><br><span class="line">r2_score(y,benchmark.predict(df))</span><br></pre></td></tr></table></figure>
+Without LSTAT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">linear_reg&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B&#39;, data&#x3D;df)</span><br><span class="line">benchmark&#x3D; linear_reg.fit()</span><br><span class="line">r2_score(y,benchmark.predict(df))</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
+<p>Without AGE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">linear_reg&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + DIS + RAD + TAX + PTRATIO + B + LSTAT&#39;, data&#x3D;df)</span><br><span class="line">benchmark&#x3D; linear_reg.fit()</span><br><span class="line">r2_score(y,benchmark.predict(df))</span><br></pre></td></tr></table></figure>
 
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/23/Atomic-Habits-3/">
-    <time datetime="2020-07-23T15:48:49.000Z" class="entry-date">
-        2020-07-23
+    <a href="/2020/08/24/Multiple-Regression/">
+    <time datetime="2020-08-24T14:30:56.000Z" class="entry-date">
+        2020-08-24
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Regression/" rel="tag">Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
 
     </footer>
 </article>
@@ -226,7 +226,7 @@
 
 
   
-    <article id="post-Atomic-Habits-2" class="post-Atomic-Habits-2 post type-post status-publish format-standard hentry">
+    <article id="post-Evaluate-Regression-Model-Performance" class="post-Evaluate-Regression-Model-Performance post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -234,46 +234,55 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/22/Atomic-Habits-2/">Atomic Habits - 2</a>
+      <a class="article-title" href="/2020/08/24/Evaluate-Regression-Model-Performance/">Evaluate Regression Model Performance</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/22/Atomic-Habits-2/" data-id="ckcxjn0eo0000vmy34oaxdubg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/24/Evaluate-Regression-Model-Performance/" data-id="cke8ljv6w0000xcy34rc89chn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h1 id="How-to-create-a-good-habit-Part-2"><a href="#How-to-create-a-good-habit-Part-2" class="headerlink" title="How to create a good habit - Part 2"></a>How to create a good habit - Part 2</h1><h2 id="Make-it-easy"><a href="#Make-it-easy" class="headerlink" title="Make it easy"></a>Make it easy</h2><ul>
-<li>Reduce friction. Decrease the number of steps between you and your good habits.<br><code>Want to exercise? Set out your workout clothes, shoes, gym bag,and water bottle ahead of time.</code></li>
-<li>Prime the environment. Prepare your environment to make future actions easier.<br><code>Prepare healthy breakfast ingredients the nigh before.When I wake up, making breakfast will be easy.</code></li>
-<li>Master the decisive moment. Optimize the small choices that deliver outsized impact.<br><code>Walking into a restaurant is a decisive moment because it determines what you’ll be eating for lunch.Technically, you are in control of what you order, but in a larger sense, you can only order an item if it is on the menu.</code></li>
-<li>Use the Two-Minute Rule. Downscale your habits until they can be done in two minutes or less.<br><code>“Read before bed each night” becomes “Read one page.”</code><br><code>For myself: &quot;Write a blog for 5 mins at 10:55pm, but later I found I couldn&#39;t stop after 5 mins&quot;</code></li>
-<li>Automate your habits. Invest in technology and onetime purchases that lock in future behavior.<br><code>Personal finance: Set an auto sehedule to transfer from your current deposit account to a fixed term deposit account each month</code><br><code>Cut off social medial browsing with Screen Time</code></li>
+        <h2 id="Split-data-into-training-data-and-test-data"><a href="#Split-data-into-training-data-and-test-data" class="headerlink" title="Split data into training data and test data"></a>Split data into training data and test data</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df[:] &#x3D; np.nan_to_num(df)&#x2F;&#x2F;Replace NaN with zero and infinity with large finite numbers</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line">X&#x3D;df.iloc[:,:-1].values</span><br><span class="line">y&#x3D;df[&#39;MEDV&#39;].values</span><br><span class="line">X_train,X_test,y_train,y_test&#x3D;train_test_split(X,y,test_size&#x3D;0.2,random_state&#x3D;0)</span><br><span class="line">lr&#x3D;LinearRegression()</span><br><span class="line">lr.fit(X_train,y_train)</span><br><span class="line">y_train_pred&#x3D;lr.predict(X_train)</span><br><span class="line">y_test_pred&#x3D;lr.predict(X_test)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Method-1-Residual-Analysis"><a href="#Method-1-Residual-Analysis" class="headerlink" title="Method 1: Residual Analysis"></a>Method 1: Residual Analysis</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize&#x3D;(12,8))</span><br><span class="line">plt.scatter(y_train_pred,y_train_pred - y_train,c&#x3D;&#39;blue&#39;,marker&#x3D;&#39;o&#39;,label&#x3D;&#39;Training data&#39;)</span><br><span class="line">plt.scatter(y_test_pred,y_test_pred-y_test,c&#x3D;&#39;orange&#39;, marker&#x3D;&#39;*&#39;, label&#x3D;&#39;Test data&#39;)</span><br><span class="line">plt.xlabel(&#39;Predicted values&#39;)</span><br><span class="line">plt.ylabel(&#39;Resudials&#39;)</span><br><span class="line">plt.legend(loc&#x3D;&#39;upper left&#39;)</span><br><span class="line">plt.hlines(y&#x3D;0,xmin&#x3D;-10, xmax&#x3D;50,lw&#x3D;2,color&#x3D;&#39;k&#39;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Method-2-Mean-Squared-Error-MSE-The-lower-the-number-the-better"><a href="#Method-2-Mean-Squared-Error-MSE-The-lower-the-number-the-better" class="headerlink" title="Method 2: Mean Squared Error (MSE), The lower the number the better"></a>Method 2: Mean Squared Error (MSE), The lower the number the better</h2><ul>
+<li>MSE=(SUM(y_real-y_predict)^2)/n ———-n is the number of y values</li>
+<li>The average value of the Sums of Squared Error cost function</li>
+<li>Useful for comparing different regression models</li>
+<li>For tuning parameters via a grid search and corss-validation<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import mean_squared_error</span><br><span class="line">mean_squared_error(y_train,y_train_pred)</span><br><span class="line">mean_squared_error(y_test,y_test_pred)</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<h2 id="Make-it-Satisfying"><a href="#Make-it-Satisfying" class="headerlink" title="Make it Satisfying"></a>Make it Satisfying</h2><ul>
-<li>Use reinforcement. Give yourself an immediate reward when you complete your habit.<br><code>For instance: Allow myself to watch a short movie video after exercising for half an hour</code></li>
-<li>Make “doing nothing” enjoyable. When avoiding a bad<br>habit, design a way to see the benefits.<br><code>For instance for smoking: You think you are quitting something, but you’re not quitting anything because cigarettes do nothing for you.You think smoking is something you need to do to be social, but it’s not. You can be social without smoking at all. You think smoking is about relieving stress, but it’s not. Smoking does not relieve your nerves, it destroys them.</code></li>
-<li>Use a habit tracker. Keep track of your habit streak and<br>“don’t break the chain.”<br><code>For instance: Note down my exercise date on a calendar</code></li>
-<li>Never miss twice. When you forget to do a habit, make sure<br>you get back on track immediately.<br><code>For instance: Whenever there is one empty mark, make sure it won&#39;t make two in a row.</code></li>
+<h2 id="Method-3-Coefficient-of-Determination-R-2-The-higher-the-number-the-better"><a href="#Method-3-Coefficient-of-Determination-R-2-The-higher-the-number-the-better" class="headerlink" title="Method 3: Coefficient of Determination R^2, The higher the number the better"></a>Method 3: Coefficient of Determination R^2, The higher the number the better</h2><ul>
+<li>R^2 = 1- SSE/SST</li>
+<li>SSE: Sum of squared errors</li>
+<li>SST: Total sum of squares<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import r2_score</span><br><span class="line">r2_score(y_train,y_train_pred)</span><br><span class="line">r2_score(y_test,y_test_pred)</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
 </ul>
 
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/22/Atomic-Habits-2/">
-    <time datetime="2020-07-22T14:52:14.000Z" class="entry-date">
-        2020-07-22
+    <a href="/2020/08/24/Evaluate-Regression-Model-Performance/">
+    <time datetime="2020-08-24T13:41:30.000Z" class="entry-date">
+        2020-08-24
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
 
     </footer>
 </article>
@@ -284,7 +293,7 @@
 
 
   
-    <article id="post-Atomic-Habits-1" class="post-Atomic-Habits-1 post type-post status-publish format-standard hentry">
+    <article id="post-Robust-Regression" class="post-Robust-Regression post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -292,51 +301,37 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/21/Atomic-Habits-1/">Atomic Habits - 1</a>
+      <a class="article-title" href="/2020/08/23/Robust-Regression/">Robust Regression</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/21/Atomic-Habits-1/" data-id="ckcw3c4nv0000c7e2dd2zbxbf" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/23/Robust-Regression/" data-id="cke78i8o00000ujy38i82d7tl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h1 id="How-to-create-a-good-habit-Part-1"><a href="#How-to-create-a-good-habit-Part-1" class="headerlink" title="How to create a good habit - Part 1"></a>How to create a good habit - Part 1</h1><h2 id="Make-it-obvious"><a href="#Make-it-obvious" class="headerlink" title="Make it obvious"></a>Make it obvious</h2><ul>
-<li><p>Write down you current habits to become aware of them</p>
-</li>
-<li><p>Use implementation intentions: “ I will [BEHABIOR] at [TIME] in [LOCAITON].<br><code>I will write a blog at 10:55 pm in my bedroom.</code></p>
-</li>
-<li><p>Use habit stacking: “After [CURRENT HABIT], I will [NEW HABIT]”.<br><code>After getting off work, I will clean up my room.</code></p>
-</li>
-<li><p>Design your environpment. Make the cues of good habits obvious and visible.<br><code>I will keep a notebook and a pen on my desk, which reminds me to write more happy moments.</code></p>
-</li>
+        <h2 id="RANSAC-RANdom-SAmple-Consensus-algorithm"><a href="#RANSAC-RANdom-SAmple-Consensus-algorithm" class="headerlink" title="RANSAC (RANdom SAmple Consensus) algorithm."></a>RANSAC (RANdom SAmple Consensus) algorithm.</h2><h2 id="Why-Robust-Regression"><a href="#Why-Robust-Regression" class="headerlink" title="Why Robust Regression"></a>Why Robust Regression</h2><ul>
+<li>Linear Regression have tendency to be affected substantially by outliers, the real world has a lot of outliers on the major impact on the accuracy of your machine learning algorithm prediction.</li>
+<li>The purpose of machine learning is to predict most of the real world condition correctly</li>
 </ul>
-<h2 id="Make-it-Attractive"><a href="#Make-it-Attractive" class="headerlink" title="Make it Attractive"></a>Make it Attractive</h2><ul>
-<li><p>Use temptation bundling. Pair an action you want to do with an action you need to do.<br>After [CURRENT HABIT], I will [HABIT I NEED].<br>After [HABIT I NEED], I will [HABIT I WANT].<br><code>1.After preparing my breakfast, I will say one thing I&#39;m grateful for that happened yesterday (need).</code><br><code>2.After I say one thing I&#39;m grateful for, I will eat my breakfast (want).</code></p>
-</li>
-<li><p>Join a culture where your desired behavior is the normal behavior.<br><code>I will play tennis with my colleagues on weekends and discuss tennis skills in wechat group.</code></p>
-</li>
-<li><p>Create a motivation ritual. Do something you enjoy immediately before a difficult habit.<br><code>Always play the same music (卡农) before start working on my school project. Then I&#39;ll begin to link the music with the act. Whenver I need to get in the mood, just press play.</code></p>
-</li>
-</ul>
-
+<h2 id="Code-Example"><a href="#Code-Example" class="headerlink" title="Code Example"></a>Code Example</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">df&#x3D;pd.read_csv(&quot;data&#x2F;&#x2F;HousingData.csv&quot;)</span><br><span class="line">pd.options.display.float_format &#x3D; &quot;&#123;:,.2f&#125;&quot;.format</span><br><span class="line">from sklearn.linear_model import RANSACRegressor</span><br><span class="line">X&#x3D;df[&#39;RM&#39;].values.reshape(-1,1)</span><br><span class="line">y&#x3D;df[&#39;MEDV&#39;].values</span><br><span class="line">ransac &#x3D; RANSACRegressor()</span><br><span class="line">ransac.fit(X,y)</span><br><span class="line">inlier_mask &#x3D; ransac.inlier_mask_</span><br><span class="line">outlier_mask &#x3D; np.logical_not(inlier_mask)</span><br><span class="line">np.arange(3,10,1)</span><br><span class="line">line_X &#x3D; np.arange(3,10,1)</span><br><span class="line">line_y_ransac&#x3D;ransac.predict(line_X.reshape(-1,1))</span><br><span class="line">ransac.estimator_.coef_</span><br><span class="line">ransac.estimator_.intercept_</span><br><span class="line"></span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">sns.set(style&#x3D;&#39;darkgrid&#39;,context&#x3D;&#39;notebook&#39;)</span><br><span class="line">plt.figure(figsize&#x3D;(12,8))</span><br><span class="line">plt.scatter(X[inlier_mask],y[inlier_mask],c&#x3D;&#39;blue&#39;,marker&#x3D;&#39;o&#39;,label&#x3D;&#39;Inliers&#39;)</span><br><span class="line">plt.scatter(y[outlier_mask],y[outlier_mask],c&#x3D;&#39;brown&#39;,marker&#x3D;&#39;s&#39;,label&#x3D;&#39;Outliers&#39;)</span><br><span class="line">plt.plot(line_X,line_y_ransac,color&#x3D;&#39;red&#39;)</span><br><span class="line">plt.xlabel(&#39;Average number of rooms per dwelling&#39;)</span><br><span class="line">plt.ylabel(&#39;Median value of owner-occupied homes in $1000\&#39;s&#39;);</span><br><span class="line">plt.legend(loc&#x3D;&#39;upper left&#39;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/21/Atomic-Habits-1/">
-    <time datetime="2020-07-21T14:54:13.000Z" class="entry-date">
-        2020-07-21
+    <a href="/2020/08/23/Robust-Regression/">
+    <time datetime="2020-08-23T14:48:34.000Z" class="entry-date">
+        2020-08-23
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Regression/" rel="tag">Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
 
     </footer>
 </article>
@@ -347,7 +342,7 @@
 
 
   
-    <article id="post-Mockk-1" class="post-Mockk-1 post type-post status-publish format-standard hentry">
+    <article id="post-Five-Steps-Machine-Learning-Process" class="post-Five-Steps-Machine-Learning-Process post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -355,51 +350,50 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/20/Mockk-1/">MockK - 1</a>
+      <a class="article-title" href="/2020/08/23/Five-Steps-Machine-Learning-Process/">Five Steps Machine Learning Process</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/20/Mockk-1/" data-id="ckcunorev0000efe2f1653qjk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/23/Five-Steps-Machine-Learning-Process/" data-id="cke764m9c0000ddy33ompdbeh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h2 id="Dependency"><a href="#Dependency" class="headerlink" title="Dependency"></a>Dependency</h2><ul>
-<li>Maven <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line"> &lt;groupId&gt;org.jetbrains.kotlinx&lt;&#x2F;groupId&gt;</span><br><span class="line"> &lt;artifactId&gt;kotlinx-coroutines-core&lt;&#x2F;artifactId&gt;</span><br><span class="line"> &lt;version&gt;x.x&lt;&#x2F;version&gt;</span><br><span class="line"> &lt;scope&gt;test&lt;&#x2F;scope&gt;</span><br><span class="line"> &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure></li>
-<li>Gradle<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">testImplementation &quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:x.x&quot;</span><br></pre></td></tr></table></figure>
-
+        <h3 id="Most-commonly-the-steps-in-using-the-Scikit-Learn-estimator-API-are-as-follows"><a href="#Most-commonly-the-steps-in-using-the-Scikit-Learn-estimator-API-are-as-follows" class="headerlink" title="Most commonly, the steps in using the Scikit-Learn estimator API are as follows"></a>Most commonly, the steps in using the Scikit-Learn estimator API are as follows</h3><ul>
+<li><p>Choose a class of model by importing the appropriate estimator class from Scikit-Learn.<br><code>from sklearn.linear_model import LinearRegression</code></p>
+</li>
+<li><p>Choose Model hyperparameters by instantiating this class with desired values.<br><code>model= LinearRegression()</code></p>
+</li>
+<li><p>Arrange data into a features matrix and target vector.<br><code>x=df[&#39;RM&#39;].values.reshape(-1,1)</code><br><code>y=df[&#39;MEDV&#39;].values</code></p>
+</li>
+<li><p>Fit the model to your data by calling the fit() method of the model instance.<br><code>model.fit(x,y)</code></p>
+</li>
+<li><p>Apply the Model to new data:<br> For supervised learning, often we predict labels for unknown data using the predict() method.<br> For unsupervised learning, we often transform or infer properties of the data using the transform() or predict() method.<br><code>model.predict(np.array([7]).reshape(1,-1))</code></p>
+</li>
+<li><p>Reference<br><code>https://arxiv.org/abs/1309.0238</code></p>
+</li>
+<li><p>Put everthing together</p>
 </li>
 </ul>
-<h2 id="Integrate-with-Junit-5"><a href="#Integrate-with-Junit-5" class="headerlink" title="Integrate with Junit 5"></a>Integrate with Junit 5</h2><ul>
-<li>Add @ExtendWith(MockKExtension::class) on top of your test class</li>
-</ul>
-<h2 id="Annoations"><a href="#Annoations" class="headerlink" title="Annoations"></a>Annoations</h2><ul>
-<li>@MockK: Creates mocks that are strict, so you need to provide some behaviour.</li>
-<li>@MockK(relaxUnitFun = true): Make Unit returning functions to be relaxed</li>
-<li>@RelaxedMockK: A relaxed mock is the mock that returns some simple value for all functions. This allows to skip specifying behavior for each case, while still allowing to stub things you need</li>
-<li>@SpyK: Spies allow to mix mocks and real objects.<pre><code>Note: the spy object is a copy of a passed object.</code></pre></li>
-<li>@InjectMockKs: @InjectMockKs by default is injecting only <code>lateinit vars</code> or <code>vars</code> that are not assigned. To change this, use <code>overrideValues = true</code>. This would assign the value even if it is already somehow initialized. To inject vals, use <code>injectImmutable = true</code>. For a shorter notation use <code>@OverrideMockKs</code> which does the same as @InjectMockKs by default, but turns these two flags on.</li>
-<li>Injection first tries to match properties by name, then by class or superclass. </li>
-<li>Properties are injected even if private is applied. Constructors for injection are selected from the biggest number of arguments to lowest.</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import numpy as np</span><br><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">df&#x3D;pd.read_csv(&quot;data&#x2F;&#x2F;HousingData.csv&quot;)</span><br><span class="line">pd.options.display.float_format &#x3D; &quot;&#123;:,.2f&#125;&quot;.format</span><br><span class="line">model &#x3D; LinearRegression()</span><br><span class="line">X&#x3D;df[&#39;RM&#39;].values.reshape(-1,1)</span><br><span class="line">y&#x3D;df[&#39;MEDV&#39;].values</span><br><span class="line">model.fit(X,y)</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">plt.figure(figsize&#x3D;(12,10))</span><br><span class="line">sns.regplot(X,y);</span><br><span class="line">plt.xlabel(&#39;RM&#39;);</span><br><span class="line">plt.ylabel(&#39;Median value of owner-occupied homes in $1000\&#39;s&#39;);</span><br><span class="line">plt.show(); </span><br><span class="line">model.predict(np.array([5]).reshape(-1,1))</span><br></pre></td></tr></table></figure>
 
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/20/Mockk-1/">
-    <time datetime="2020-07-20T14:51:38.000Z" class="entry-date">
-        2020-07-20
+    <a href="/2020/08/23/Five-Steps-Machine-Learning-Process/">
+    <time datetime="2020-08-23T04:51:59.000Z" class="entry-date">
+        2020-08-23
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Technology/" rel="tag">Technology</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
 
     </footer>
 </article>
@@ -410,7 +404,7 @@
 
 
   
-    <article id="post-Tools-of-Titans-3" class="post-Tools-of-Titans-3 post type-post status-publish format-standard hentry">
+    <article id="post-The-Load-Less-Travelled" class="post-The-Load-Less-Travelled post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -418,59 +412,72 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/19/Tools-of-Titans-3/">Tools of Titans - 3</a>
+      <a class="article-title" href="/2020/08/07/The-Load-Less-Travelled/">The Load Less Travelled</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/19/Tools-of-Titans-3/" data-id="ckct7svu60000gcy3auephf2e" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/07/The-Load-Less-Travelled/" data-id="ckdkesyph0000k4e2gwus0gx3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h1 id="3-Life-Advices-that-can-get-you-out-of-Dilemma"><a href="#3-Life-Advices-that-can-get-you-out-of-Dilemma" class="headerlink" title="3 Life Advices that can get you out of Dilemma"></a>3 Life Advices that can get you out of Dilemma</h1><h2 id="No-Need-to-Wait"><a href="#No-Need-to-Wait" class="headerlink" title="No Need to Wait"></a>No Need to Wait</h2><ul>
-<li>If you have a 10-Year plan to achieve your plan, why can’t you do this in 6 months?</li>
-<li>If someone point a gun at your head, force you to complete your plan in 6 months, what would you do?</li>
-<li>Break out of the box, break the rules</li>
-<li>If you want to get something you’ve never had before, then you must do something that you’ve never done before.</li>
-<li>Not everybody should do the same thing</li>
+        <h1 id="Lesson-Learnt"><a href="#Lesson-Learnt" class="headerlink" title="Lesson Learnt"></a>Lesson Learnt</h1><ul>
+<li>Lesson 1: Accept responsibility for your problems</li>
+<li>Lesson 2: Love is seperateness</li>
+<li>Lesson 3: Honesty is freedom</li>
 </ul>
-<h2 id="Escape-from-comfort-zone"><a href="#Escape-from-comfort-zone" class="headerlink" title="Escape from comfort zone"></a>Escape from comfort zone</h2><ul>
-<li>Fear-Rehearsing, Exposure to the “Bad”</li>
-<li>Lucius Annaeus Seneca tried 3-14 days simulate losing all money, he only did a few things<ul>
-<li>Sleeping in sleeping bag whether indoor or outside</li>
-<li>Wearing cheap white shirt &amp; Single pair of Jeans</li>
-<li>Couchsurfing.com or similar services</li>
-<li>Eating only instant oat or rice</li>
-<li>Drinking only water and cheap instant coffee</li>
-<li>Online only at libraries</li>
+<h2 id="Discipline"><a href="#Discipline" class="headerlink" title="Discipline"></a>Discipline</h2><ul>
+<li>Life is difficult</li>
+<li>Problems will arise, people are suffing and try to avoid to deal with problems<ul>
+<li>Delayed gratification（自律：推迟满足感）</li>
+<li>Accept responsibility for your problems (自律：承担责任)</li>
+<li>Dedication to the truth（忠于事实）</li>
+<li>Balancing（保持平衡，承担该承担的责任，也不能把所有责任压在自己身上）</li>
 </ul>
 </li>
-<li>You will happier after done all those things</li>
-<li>明明自由是可能的，但我们却让自己陷入一成不变但陈旧模式中勉强的过日子…</li>
 </ul>
-<h2 id="Use-what-you-have"><a href="#Use-what-you-have" class="headerlink" title="Use what you have"></a>Use what you have</h2><ul>
-<li>Robert Rodriguez: There’s a freedom in limitation</li>
-<li>有时候缺乏资源，才是取得伟大成就的关键因素。如果你真的想要做一件事情，你永远都会找到方法的。</li>
-<li>Take action!!!</li>
+<h2 id="Love"><a href="#Love" class="headerlink" title="Love"></a>Love</h2><ul>
+<li>The will to extend oneself for your own or anothers spritual growth</li>
+<li>True Love vs Passion<ul>
+<li>Love is not dependency</li>
+<li>Commitment</li>
+<li>Attention</li>
+<li>Courage</li>
+<li>Balance</li>
+</ul>
+</li>
+</ul>
+<h2 id="Religion"><a href="#Religion" class="headerlink" title="Religion"></a>Religion</h2><ul>
+<li>Broader Definition<ul>
+<li>Personal Views</li>
+<li>Religious Ideas</li>
+</ul>
+</li>
+<li>Hinder or promote spiritual growth</li>
+<li>Science VS Religion</li>
+</ul>
+<h2 id="Grace"><a href="#Grace" class="headerlink" title="Grace"></a>Grace</h2><ul>
+<li>Universal force</li>
+<li>Miracles</li>
 </ul>
 
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/19/Tools-of-Titans-3/">
-    <time datetime="2020-07-19T14:40:12.000Z" class="entry-date">
-        2020-07-19
+    <a href="/2020/08/07/The-Load-Less-Travelled/">
+    <time datetime="2020-08-07T15:14:55.000Z" class="entry-date">
+        2020-08-07
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
 
     </footer>
 </article>
@@ -481,7 +488,7 @@
 
 
   
-    <article id="post-Tools-of-Titans-2" class="post-Tools-of-Titans-2 post type-post status-publish format-standard hentry">
+    <article id="post-Nonviolent-Communication" class="post-Nonviolent-Communication post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -489,42 +496,70 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/18/Tools-of-Titans-2/">Tools of Titans - 2</a>
+      <a class="article-title" href="/2020/08/02/Nonviolent-Communication/">非暴力沟通</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/18/Tools-of-Titans-2/" data-id="ckcrrgfhc0000x1y36awxc1i8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/02/Nonviolent-Communication/" data-id="ckdd7nci20000pwy3fa0p8hy0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h2 id="Make-your-bed"><a href="#Make-your-bed" class="headerlink" title="Make your bed"></a>Make your bed</h2><ul>
-<li>Make up your bed every morning no matter what, even when you’re staying in a hotel.</li>
-<li>Clean environment will make you have a sense of satification.</li>
-<li>Spend 1 minitue to makeup your bed, you will see the difference.</li>
+        <h2 id="生气的理由-需求没有被满足"><a href="#生气的理由-需求没有被满足" class="headerlink" title="生气的理由 - 需求没有被满足"></a>生气的理由 - 需求没有被满足</h2><ul>
+<li>你生气别人骂你时，是因为你需要尊重</li>
+<li>你生气别人拿你东西，是因为你想保护自己的财产</li>
+<li>你生气孩子不听话，是因为你希望把孩子培养好</li>
+<li>你生气朋友欺骗你，是因为你需要情感归属</li>
 </ul>
-<h2 id="Meditate"><a href="#Meditate" class="headerlink" title="Meditate"></a>Meditate</h2><ul>
-<li>Miditate for 10-20 minutes each day</li>
-<li>Have a daily mindfullness practice</li>
-<li>Two Apps recommended to better practice meditation: HEADSPACE &amp; Calm</li>
-<li>More details regarding how to meditate can be found at <a href="./2020/07/16/How-to-meditate/">How to Mediate</a></li>
+<h2 id="正确的做法：提出自己的需求，和对方商量解决办法"><a href="#正确的做法：提出自己的需求，和对方商量解决办法" class="headerlink" title="正确的做法：提出自己的需求，和对方商量解决办法"></a>正确的做法：提出自己的需求，和对方商量解决办法</h2><ul>
+<li>当母亲看到儿子把脏衣服乱扔<ul>
+<li>暴力沟通：常见的反应是：你怎么总是这么邋遢，你就不能放到洗衣机里吗？</li>
+<li>非暴力沟通：我看到沙发上有两只脏袜子，我不太高兴，因为我看重整洁。你是否愿意把袜子放进洗衣机？</li>
 </ul>
-<h2 id="Turn-into-the-peak-state"><a href="#Turn-into-the-peak-state" class="headerlink" title="Turn into the peak state"></a>Turn into the peak state</h2><ul>
-<li>Cold Shower to refresh your mind</li>
-<li>Breathing Exercise: The ratio for “Inhale”:”Hold Breath”:”Exhale” should be 1:4:2, for example, take 4 seconds to inhale, 16 seconds to hold your breath and 8 seconds to exhale.</li>
-<li>Do this few minitues</li>
-<li>Do Short time of body exercises for 5-10 times, it can be pushups , deep squat , jump in place or other exercises</li>
+</li>
 </ul>
-<h2 id="5-10-Minutes-Journal"><a href="#5-10-Minutes-Journal" class="headerlink" title="5-10 Minutes Journal"></a>5-10 Minutes Journal</h2><ul>
-<li>Recommend 2 types of journaling<ul>
-<li>The problems you’re facing</li>
-<li>Prioritizing and gratitude<ul>
-<li>3 important thing you have to finish today</li>
-<li>3 things you’re grateful for</li>
+<h2 id="非暴力沟通的四个步骤"><a href="#非暴力沟通的四个步骤" class="headerlink" title="非暴力沟通的四个步骤"></a>非暴力沟通的四个步骤</h2><ul>
+<li><p>观察：不带评论的观察，描述行为而非攻击人格</p>
+<ul>
+<li>从事实入手</li>
+<li>不能言过其实</li>
+<li>一次只说一件事</li>
+<li>不要推测意图</li>
+<li>不要随意评价</li>
+</ul>
+</li>
+<li><p>感受 ： 情绪源于自身</p>
+<ul>
+<li>遇到不满意的事<ul>
+<li>分析自己的想法：“还有没有别的解释？”</li>
+<li>关注自身：“我的什么需要没有被满足？”“ta 的行为违背了我的什么价值观？”</li>
+<li>第一人称表述：“我感到。。。，因为我。。。“ 比如，我感到生气而非你惹怒我了。我有点失望而非你让我失望</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>需要</p>
+<ul>
+<li>从正面说：告诉 ta 需要做什么而不是不做什么</li>
+<li>比如妻子对丈夫说：我不想让你去参加球赛，丈夫可能会感到莫名其妙。妻子应该直接说出来：我希望你周末能陪陪我和孩子</li>
+<li>如果你对家人说：不要再喝酒了。估计很难起到作用。你可以这样说：你能否告诉我喝酒满足了你的什么需要？有没有其他方式可以满足那些需要？</li>
+</ul>
+</li>
+<li><p>请求 ： 提出明确的请求</p>
+<ul>
+<li>改变做法：比如进我房间请敲门。而不是改变性格：请考虑周到些</li>
+<li>请求不是命令：利用恐惧和内疚来实现自己的目的，那就不是请求，而是命令。<ul>
+<li>恐惧：你再这样我生气了。</li>
+<li>内疚： 如果你真的爱我，就应该陪着我。</li>
+</ul>
+</li>
+<li>请求和命令的区别在于：你有没有考虑别人的感受。<ul>
+<li>提出命令的人，如果听到别人的拒绝，会感到生气，想要指责对方。</li>
+<li>提出请求的人，如果被别人拒绝，他会考虑对方有什么困难。</li>
 </ul>
 </li>
 </ul>
@@ -535,15 +570,15 @@
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/18/Tools-of-Titans-2/">
-    <time datetime="2020-07-18T14:13:53.000Z" class="entry-date">
-        2020-07-18
+    <a href="/2020/08/02/Nonviolent-Communication/">
+    <time datetime="2020-08-02T14:22:06.000Z" class="entry-date">
+        2020-08-02
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a></li></ul>
 
     </footer>
 </article>
@@ -554,7 +589,7 @@
 
 
   
-    <article id="post-Tools-of-Titans-1" class="post-Tools-of-Titans-1 post type-post status-publish format-standard hentry">
+    <article id="post-talk" class="post-talk post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -562,44 +597,55 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/17/Tools-of-Titans-1/">Tools of Titans - 1</a>
+      <a class="article-title" href="/2020/07/30/talk/">说话的技巧</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/17/Tools-of-Titans-1/" data-id="ckcqf1nvf0000s1y34kye9uuo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/30/talk/" data-id="ckd8z05w20000sge2e9hd9r6u" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h2 id="Happiness-Bottle-Record-great-things"><a href="#Happiness-Bottle-Record-great-things" class="headerlink" title="Happiness Bottle - Record great things"></a>Happiness Bottle - Record great things</h2><ul>
-<li>Anytime something really cool happens in a day, excited or joyful, write it down on a note and put in inside the bottle.</li>
-<li>When you feel depressed, take a look on the great memories.</li>
-<li>Great things example: watched a fantastic movie, read a great book, met an old friend…</li>
-<li>If you really don’t know what to write, you can simply put “I’m still alive today”</li>
+        <h1 id="与人交谈不只是技术，也是态度。技术需要的是练习，态度需要的是体会"><a href="#与人交谈不只是技术，也是态度。技术需要的是练习，态度需要的是体会" class="headerlink" title="与人交谈不只是技术，也是态度。技术需要的是练习，态度需要的是体会"></a>与人交谈不只是技术，也是态度。技术需要的是练习，态度需要的是体会</h1><h2 id="不说话有时比说话还重要"><a href="#不说话有时比说话还重要" class="headerlink" title="不说话有时比说话还重要"></a>不说话有时比说话还重要</h2><ul>
+<li>即使意见不同，也尊重对方有发言权</li>
+<li>倾听，尊重 就是为对方打开自己的耳朵</li>
+<li>人生的智慧往往来自于聆听，而后悔则大多来自于发言</li>
 </ul>
-<h2 id="Randomly-wishing-people"><a href="#Randomly-wishing-people" class="headerlink" title="Randomly wishing people"></a>Randomly wishing people</h2><ul>
-<li>10-second exercise, pick 2 random people and wish them to be happy</li>
-<li>Practice the exercise at any time, any place</li>
-<li>Help other people like “Buying a coffee for the people stand behind you” ,”Praise strangers” or “Do voluntary work”…</li>
+<h2 id="跟对方产生共感"><a href="#跟对方产生共感" class="headerlink" title="跟对方产生共感"></a>跟对方产生共感</h2><ul>
+<li>用同理心去感受对方经历的事</li>
+<li>用同理心而不是同情心</li>
+</ul>
+<h2 id="适时的回应对方"><a href="#适时的回应对方" class="headerlink" title="适时的回应对方"></a>适时的回应对方</h2><ul>
+<li>用回应来创造彼此的互动</li>
+<li>说一次、听两次、附和三次</li>
+<li>看着对方的眼睛去听 ta 说话，聊天过程中可以点头，如果有好奇的地方可以用“真的吗？然后呢？诶，这个有趣！”来表达感受到的情绪</li>
+</ul>
+<h2 id="把话讲的更简短，让结构更简洁"><a href="#把话讲的更简短，让结构更简洁" class="headerlink" title="把话讲的更简短，让结构更简洁"></a>把话讲的更简短，让结构更简洁</h2><ul>
+<li>上课时的心得报告</li>
+<li>会议中的发言和简报</li>
+<li>说之前把重点写下来</li>
+</ul>
+<h2 id="给人建议时要对事不对人，不批评"><a href="#给人建议时要对事不对人，不批评" class="headerlink" title="给人建议时要对事不对人，不批评"></a>给人建议时要对事不对人，不批评</h2><ul>
+<li>不要批评别人</li>
 </ul>
 
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/17/Tools-of-Titans-1/">
-    <time datetime="2020-07-17T15:41:13.000Z" class="entry-date">
-        2020-07-17
+    <a href="/2020/07/30/talk/">
+    <time datetime="2020-07-30T15:30:15.000Z" class="entry-date">
+        2020-07-30
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
 
     </footer>
 </article>
@@ -610,7 +656,7 @@
 
 
   
-    <article id="post-Benefits-of-meditation" class="post-Benefits-of-meditation post type-post status-publish format-standard hentry">
+    <article id="post-suibi-1" class="post-suibi-1 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -618,70 +664,41 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/16/Benefits-of-meditation/">Top 5 Benefits of meditation</a>
+      <a class="article-title" href="/2020/07/28/suibi-1/">心情笔记</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/16/Benefits-of-meditation/" data-id="ckcoxpy8l0000i6e28wyl22nm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/28/suibi-1/" data-id="ckd61f18x0000rly39j1h8ihv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h2 id="Increase-ability-to-endure-pain"><a href="#Increase-ability-to-endure-pain" class="headerlink" title="Increase ability to endure pain"></a>Increase ability to endure pain</h2><ul>
-<li>Reduce pain 40%</li>
-<li>Reduce comfortable 57%</li>
-<li>Meditation is better than painkiller</li>
-</ul>
-<h2 id="Upgrade-your-brain"><a href="#Upgrade-your-brain" class="headerlink" title="Upgrade your brain"></a>Upgrade your brain</h2><ul>
-<li>8 Weeks of meditation improve 3 brain areas<ul>
-<li>Hippocampus &amp; Perfrontal cortex which incharge of ability to learn &amp; memory</li>
-<li>Posterior Cingulate Cortex which control of mind &amp; thinking</li>
-<li>Temporop arietal junction which incharge of compassion &amp; empathy</li>
-</ul>
+        <ul>
+<li><p>突然被一个老同学感动到了，在物欲横流的世界中，真的很幸运能交到这么一群能无私给予我帮助的朋友。</p>
 </li>
-<li>Not only increate the brain size of important areas, it also reduce amygdala cell which incharge of fear anxiety &amp; stress</li>
-<li>Faster info processing</li>
-<li>Faster decision making</li>
-<li>Faster memory forming &amp; focus</li>
-</ul>
-<h2 id="Reduce-bad-emotion"><a href="#Reduce-bad-emotion" class="headerlink" title="Reduce bad emotion"></a>Reduce bad emotion</h2><ul>
-<li>Reduce depression, stress &amp; anxiety</li>
-<li>Effective last above 6 months</li>
-<li>Withnot sign of depression</li>
-<li>Reduce overthinking &amp; loss of confident</li>
-<li>Increase in happiness</li>
-<li>Improve performance on tests on cognitive skill</li>
-<li>Some even 10x better</li>
-<li>Better performance in tasks with deadline pressure</li>
-</ul>
-<h2 id="Super-Healthy"><a href="#Super-Healthy" class="headerlink" title="Super Healthy"></a>Super Healthy</h2><ul>
-<li>Telomeres, meditation slow down the rate of cellular aging</li>
-<li>Reduce in blood pressure</li>
-<li>Reduce in social pressure</li>
-<li>Meditation can reduce alzheimers</li>
-</ul>
-<h2 id="Super-Happy"><a href="#Super-Happy" class="headerlink" title="Super Happy"></a>Super Happy</h2><ul>
-<li>Improve a person’s ability to read the facial expressions of others</li>
-<li>Be more present &amp; aware of the surrounding</li>
+<li><p>不擅长表达感激的我，只能偷偷把这些感动记录下来。同时也提醒自己要一直做一个诚实守信，也能给别人带来温暖的人。</p>
+</li>
+<li><p>Good friends are like good wine, they get better with age.</p>
+</li>
 </ul>
 
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/16/Benefits-of-meditation/">
-    <time datetime="2020-07-16T14:55:20.000Z" class="entry-date">
-        2020-07-16
+    <a href="/2020/07/28/suibi-1/">
+    <time datetime="2020-07-28T14:17:41.000Z" class="entry-date">
+        2020-07-28
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
 
     </footer>
 </article>
@@ -692,7 +709,7 @@
 
 
   
-    <article id="post-How-to-meditate" class="post-How-to-meditate post type-post status-publish format-standard hentry">
+    <article id="post-Fear-Setting" class="post-Fear-Setting post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -700,67 +717,45 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/16/How-to-meditate/">How to meditate</a>
+      <a class="article-title" href="/2020/07/26/Fear-Setting/">Fear Setting</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/16/How-to-meditate/" data-id="ckcoxpy8p0001i6e2e8ql12ez" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/26/Fear-Setting/" data-id="ckd38x22e0000tie25onf8z55" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h2 id="Where-to-meditate"><a href="#Where-to-meditate" class="headerlink" title="Where to meditate?"></a>Where to meditate?</h2><ul>
-<li>Place that avoid distraction. Say bedroom,living room, balcony</li>
-<li>Turn off distraction devices like TV, Mobile phone</li>
+        <h1 id="Write-down-something-that-you-wanted-to-do-all-the-time-but-didn’t-take-action"><a href="#Write-down-something-that-you-wanted-to-do-all-the-time-but-didn’t-take-action" class="headerlink" title="Write down something that you wanted to do all the time but didn’t take action"></a>Write down something that you wanted to do all the time but didn’t take action</h1><h2 id="First-Page"><a href="#First-Page" class="headerlink" title="First Page:"></a>First Page:</h2><ul>
+<li>What if I …? (Start a Vacation/Asking Someone Out/Asking a Promotion/Quiting a job/Start a Company/Start Something Excited)</li>
+<li>Define : Writing down all the worse things you can imagine if you take that step</li>
+<li>Prevent : What could I do to prevent each of them</li>
+<li>Repair : What could I do to repair the damage</li>
 </ul>
-<h2 id="What’s-the-posture"><a href="#What’s-the-posture" class="headerlink" title="What’s the posture?"></a>What’s the posture?</h2><ul>
-<li>For beginners, the easiest way is sitting on a chair,foot on the floor,hands on the tights,back straight</li>
-<li>Keep it comfortable, add a cushion or towel if needed</li>
-<li>Close your eyes to avoid distraction &amp; easier to be focus</li>
+<h2 id="Second-Page"><a href="#Second-Page" class="headerlink" title="Second Page"></a>Second Page</h2><ul>
+<li>What might be the benefits of an attempt or partial success?</li>
 </ul>
-<h2 id="How-long-for-a-meditation"><a href="#How-long-for-a-meditation" class="headerlink" title="How long for a meditation?"></a>How long for a meditation?</h2><ul>
-<li>For beginners, Recommend start with 5 minutes per day.</li>
-<li>Set a timer to avoid you to think about the time</li>
-<li>After a few days, you can increase the time to 10-20 mins.</li>
+<h2 id="Third-Page"><a href="#Third-Page" class="headerlink" title="Third Page"></a>Third Page</h2><ul>
+<li>The cost of inaction?</li>
 </ul>
-<h2 id="What-are-the-steps"><a href="#What-are-the-steps" class="headerlink" title="What are the steps?"></a>What are the steps?</h2><ul>
-<li>There are over hundred types of meditation in the world</li>
-<li>The easiest type, self-observation.</li>
-<li>After sitting on the chair, use your nose to take breath</li>
-<li>Observe the process of breath</li>
-<li>Observe your physical sensation</li>
-<li>Scan the whole body</li>
-<li>Repeat the process</li>
-<li>Just focus on the breath if you feel difficult</li>
-<li>Notice &amp; Drag the focus back to breath &amp; body if you’re distracted by other thoughts.</li>
-</ul>
-<h2 id="How-long-will-it-take-effect"><a href="#How-long-will-it-take-effect" class="headerlink" title="How long will it take effect?"></a>How long will it take effect?</h2><ul>
-<li>Depends on frequency, length &amp; personal causes</li>
-<li>Better do it one to two times per day.</li>
-<li>Meditate 10 mins per day after clean up</li>
-<li>Meditate at regular time to form habit</li>
-<li>Don’t meditate immediately after meal</li>
-<li>Some people can feel the effect in one months</li>
-<li>Remind yourself everyday, only consistence make the result</li>
-</ul>
-
+<h2 id="Easy-Choices-Hard-Life-Hard-Choices-Easy-Life"><a href="#Easy-Choices-Hard-Life-Hard-Choices-Easy-Life" class="headerlink" title="Easy Choices, Hard Life. Hard Choices, Easy Life"></a>Easy Choices, Hard Life. Hard Choices, Easy Life</h2><h2 id="Remenber-There-is-Only-one-life"><a href="#Remenber-There-is-Only-one-life" class="headerlink" title="Remenber, There is Only one life"></a>Remenber, There is Only one life</h2>
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2020/07/16/How-to-meditate/">
-    <time datetime="2020-07-16T14:34:04.000Z" class="entry-date">
-        2020-07-16
+    <a href="/2020/07/26/Fear-Setting/">
+    <time datetime="2020-07-26T15:18:40.000Z" class="entry-date">
+        2020-07-26
     </time>
 </a>
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
 
     </footer>
 </article>
@@ -774,7 +769,7 @@
   
     <nav id="pagination">
       <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+        <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
       </nav>
     </nav>
   
@@ -800,23 +795,23 @@
       <ul>
         
           <li>
-            <a href="/2020/08/24/Multiple-Regression/">Multiple Regression</a>
+            <a href="/2020/08/31/Reinforcement-Learning/">Reinforcement Learning</a>
           </li>
         
           <li>
-            <a href="/2020/08/24/Evaluate-Regression-Model-Performance/">Evaluate Regression Model Performance</a>
+            <a href="/2020/08/29/Google-Colab/">Google Colab</a>
           </li>
         
           <li>
-            <a href="/2020/08/23/Robust-Regression/">Robust Regression</a>
+            <a href="/2020/08/27/SGD/">SGD</a>
           </li>
         
           <li>
-            <a href="/2020/08/23/Five-Steps-Machine-Learning-Process/">Five Steps Machine Learning Process</a>
+            <a href="/2020/08/26/Cross-Valiation/">Cross Valiation</a>
           </li>
         
           <li>
-            <a href="/2020/08/07/The-Load-Less-Travelled/">The Load Less Travelled</a>
+            <a href="/2020/08/26/Learning-Curve/">Learning Curve</a>
           </li>
         
       </ul>
@@ -828,7 +823,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Feature/" rel="tag">Feature</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Colab/" rel="tag">Google Colab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning-Tools/" rel="tag">Machine Learning Tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nonlinear/" rel="tag">Nonlinear</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynominal-Regression/" rel="tag">Polynominal Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regularized-Method-for-Regression/" rel="tag">Regularized Method for Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reinforcement-Learning/" rel="tag">Reinforcement Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -837,7 +832,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Atomic-Habits/" style="font-size: 16px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 20px;">Books</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 16px;">Machine Learning</a> <a href="/tags/Meditation/" style="font-size: 12px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 14px;">Morning Habits</a> <a href="/tags/Multiple-Regression/" style="font-size: 10px;">Multiple Regression</a> <a href="/tags/Photography/" style="font-size: 18px;">Photography</a> <a href="/tags/Robust-Regression/" style="font-size: 12px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 16px;">Tech</a> <a href="/tags/Technology/" style="font-size: 12px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 14px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
+      <a href="/tags/Atomic-Habits/" style="font-size: 15px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 18.33px;">Books</a> <a href="/tags/Feature/" style="font-size: 10px;">Feature</a> <a href="/tags/Google-Colab/" style="font-size: 10px;">Google Colab</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Machine-Learning-Tools/" style="font-size: 10px;">Machine Learning Tools</a> <a href="/tags/Meditation/" style="font-size: 11.67px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 13.33px;">Morning Habits</a> <a href="/tags/Multiple-Regression/" style="font-size: 10px;">Multiple Regression</a> <a href="/tags/Nonlinear/" style="font-size: 10px;">Nonlinear</a> <a href="/tags/Photography/" style="font-size: 16.67px;">Photography</a> <a href="/tags/Polynominal-Regression/" style="font-size: 10px;">Polynominal Regression</a> <a href="/tags/Regression/" style="font-size: 15px;">Regression</a> <a href="/tags/Regularized-Method-for-Regression/" style="font-size: 10px;">Regularized Method for Regression</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 10px;">Reinforcement Learning</a> <a href="/tags/Robust-Regression/" style="font-size: 11.67px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 20px;">Tech</a> <a href="/tags/Technology/" style="font-size: 11.67px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 13.33px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
     </div>
   </aside>
 

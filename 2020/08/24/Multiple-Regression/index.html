@@ -27,11 +27,12 @@ Steps with example boston d" />
 <meta property="og:description" content="Difference between Simple Linear Regression Simple Linear Regression y&#x3D;β0+β1X Multiple Linear Regression y&#x3D;β0+β1X1+β2X2+…  Steps with example boston dataset import libraries 1234567import numpy as npi">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-24T14:30:56.000Z">
-<meta property="article:modified_time" content="2020-08-24T15:37:15.794Z">
+<meta property="article:modified_time" content="2020-08-25T14:41:51.590Z">
 <meta property="article:author" content="Zou Xuan">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Tech">
 <meta property="article:tag" content="Multiple Regression">
+<meta property="article:tag" content="Regression">
 <meta name="twitter:card" content="summary">
   
   
@@ -107,11 +108,57 @@ Steps with example boston d" />
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.datasets import load_boston</span><br><span class="line">boston_data &#x3D; load_boston()</span><br><span class="line">df&#x3D;pd.DataFrame(boston_data.data, columns&#x3D;boston_data.feature_names)</span><br><span class="line">df.head()</span><br><span class="line">df.shape</span><br><span class="line">X&#x3D;df</span><br><span class="line">y&#x3D;boston_data.target</span><br><span class="line">y</span><br></pre></td></tr></table></figure></li>
 <li><p>Statsmodels</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">No module named &#39;statsmodels&#39;</span><br><span class="line">import statsmodels.formula.api as smf</span><br><span class="line">X_constant&#x3D; sm.add_constant(X) </span><br><span class="line">pd.DataFrame(X_constant)</span><br><span class="line">model&#x3D;sm.OLS(y,X_constant)</span><br><span class="line">lr&#x3D;model.fit()</span><br><span class="line">lr.summary()</span><br></pre></td></tr></table></figure>
-<p>Note: 1)if P&gt;|t| in the summary is less than 5%(0.05), we take that feature as significant</p>
-<pre><code>2)We need to add a constant term to allow statsmodel api to calculate the bias/intercepts</code></pre></li>
-<li><p>statsmodels.formula.api</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#39;y ~ CRIM+ZN&#39;</span><br><span class="line">form_lr&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B + LSTAT&#39;, data&#x3D;df)</span><br><span class="line">mlr&#x3D; form_lr.fit()</span><br><span class="line">mlr.summary()</span><br></pre></td></tr></table></figure></li>
+<p>Note:<br>1)if P&gt;|t| in the summary is less than 5%(0.05), we take that feature as significant<br>2)We need to add a constant term to allow statsmodel api to calculate the bias/intercepts</p>
+</li>
+<li><p>statsmodels.formula.api  to specify the columns that you want to fit in the model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">form_lr&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B + LSTAT&#39;, data&#x3D;df)</span><br><span class="line">mlr&#x3D; form_lr.fit()</span><br><span class="line">mlr.summary()</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
+<p>Note there was a warning: The condition number is large, 1.51e+04. This might indicate that there are<br>strong multicollinearity or other numerical problems. Which means there are two features that are strongly corelated to each other.<br>Use diagnostic tool to identify collinearity between predictors:</p>
+<h2 id="Correlation-Matrix"><a href="#Correlation-Matrix" class="headerlink" title="Correlation Matrix"></a>Correlation Matrix</h2><ol>
+<li><p>Get all the correlation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pd.options.display.float_format &#x3D; &#39;&#123;:,.2f&#125;&#39;.format</span><br><span class="line">corr_matrix&#x3D;df.corr()</span><br><span class="line">corr_matrix</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Mask some data if the abs correlation is less than 0.6</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">corr_matrix[np.abs(corr_matrix)&lt;0.6]&#x3D;0</span><br><span class="line">corr_matrix</span><br></pre></td></tr></table></figure></li>
+<li><p>Vistulize by showing the result with heatmap</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize&#x3D;(16,10))</span><br><span class="line">sns.heatmap(corr_matrix,annot&#x3D;True,cmap&#x3D;&#39;YlGnBu&#39;)</span><br><span class="line">plt.show</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Detecting-Collinearity-with-Eigenvectors-Use-small-eigenvalues-and-large-eigenvectors"><a href="#Detecting-Collinearity-with-Eigenvectors-Use-small-eigenvalues-and-large-eigenvectors" class="headerlink" title="Detecting Collinearity with Eigenvectors : Use small eigenvalues and large eigenvectors"></a>Detecting Collinearity with Eigenvectors : Use small eigenvalues and large eigenvectors</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pd.options.display.float_format &#x3D; &#39;&#123;:,.4f&#125;&#39;.format</span><br><span class="line">eigenvalues, eigenvectors &#x3D; np.linalg.eig(df.corr())</span><br><span class="line">pd.Series(eigenvalues).sort_values()</span><br></pre></td></tr></table></figure>
+<p>Result</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">8    0.0635</span><br><span class="line">10   0.1693</span><br><span class="line">11   0.1860</span><br><span class="line">12   0.2202</span><br><span class="line">9    0.2769</span><br><span class="line">7    0.3961</span><br><span class="line">6    0.5354</span><br><span class="line">5    0.6574</span><br><span class="line">4    0.8348</span><br><span class="line">3    0.8576</span><br><span class="line">2    1.2426</span><br><span class="line">1    1.4333</span><br><span class="line">0    6.1268</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>Note that index 8, eigenvalue of 0.0635, is near to zero or very small compared to the others, Small value represents presence of collinearity. Check what is exactly number 8<br><code>np.abs(pd.Series(eigenvectors[:,8])).sort_values(ascending=False)</code><br>Result</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">9    0.7202</span><br><span class="line">8    0.6335</span><br><span class="line">2    0.2511</span><br><span class="line">1    0.0809</span><br><span class="line">0    0.0460</span><br><span class="line">5    0.0456</span><br><span class="line">4    0.0436</span><br><span class="line">6    0.0386</span><br><span class="line">3    0.0359</span><br><span class="line">12   0.0244</span><br><span class="line">10   0.0234</span><br><span class="line">7    0.0183</span><br><span class="line">11   0.0045</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>Note that index 9,8,2 have very hight loading when compared against the rest<br><code>print(df.columns[2],df.columns[8],df.columns[9]</code><br>These are the factors that are causing multicollinearity problem.<br>Result<br><code>INDUS RAD TAX</code></p>
+<h2 id="Revisiting-Feature-Importance-and-Extractions"><a href="#Revisiting-Feature-Importance-and-Extractions" class="headerlink" title="Revisiting Feature Importance and Extractions"></a>Revisiting Feature Importance and Extractions</h2><p>Check :</p>
+<ol>
+<li><p>Direction of the coefficient</p>
+</li>
+<li><p>Impact of the variable / factor on the model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.hist(df[&#39;TAX&#39;])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.hist(df[&#39;NOX&#39;])</span><br></pre></td></tr></table></figure>
+<p>Note the range of TAX goes from 200 ~ 700, the NOX ranges from 0.4 ~ 1, the scale of these are really quite large, it will supress the coefficient itself, which is not an ideal situation.<br>What we can do is</p>
+<ul>
+<li>Standardise Variable to Identity Key Feature(s)<br>Get coefficient values by feature name<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">model&#x3D;LinearRegression()</span><br><span class="line">model.fit(X,y)</span><br><span class="line">result&#x3D;pd.DataFrame(list(zip(model.coef_,df.columns)),columns&#x3D;[&#39;coefficient&#39;,&#39;name&#39;]).set_index(&#39;name&#39;)</span><br><span class="line">np.abs(result).sort_values(by&#x3D;&#39;coefficient&#39;,ascending&#x3D;False)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import StandardScaler</span><br><span class="line">from sklearn.pipeline import make_pipeline</span><br><span class="line">scaler&#x3D; StandardScaler()</span><br><span class="line">standard_coefficient_linear_reg&#x3D;make_pipeline(scaler,model)</span><br><span class="line"></span><br><span class="line">standard_coefficient_linear_reg.fit(X,y)</span><br><span class="line">result&#x3D;pd.DataFrame(list(zip(standard_coefficient_linear_reg.steps[1][1].coef_,df.columns)),</span><br><span class="line">columns&#x3D;[&#39;coefficient&#39;,&#39;name&#39;]).set_index(&#39;name&#39;)</span><br><span class="line">np.abs(result).sort_values(by&#x3D;&#39;coefficient&#39;,ascending&#x3D;False)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Use-R-2-to-Identify-Key-Features"><a href="#Use-R-2-to-Identify-Key-Features" class="headerlink" title="Use R^2 to Identify Key Features"></a>Use R^2 to Identify Key Features</h2><ul>
+<li>Compare R^2 of model against R^2 of model without a feature</li>
+<li>A significant change in R^2 signify the importance of the feature<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.metrics import r2_score</span><br><span class="line">linear_reg&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B + LSTAT&#39;, data&#x3D;df)</span><br><span class="line">benchmark&#x3D; linear_reg.fit()</span><br><span class="line">r2_score(y,benchmark.predict(df))</span><br></pre></td></tr></table></figure>
+Without LSTAT<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">linear_reg&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + AGE + DIS + RAD + TAX + PTRATIO + B&#39;, data&#x3D;df)</span><br><span class="line">benchmark&#x3D; linear_reg.fit()</span><br><span class="line">r2_score(y,benchmark.predict(df))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>Without AGE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">linear_reg&#x3D;smf.ols(formula&#x3D;&#39;y ~ CRIM + ZN + INDUS + CHAS + NOX + RM + DIS + RAD + TAX + PTRATIO + B + LSTAT&#39;, data&#x3D;df)</span><br><span class="line">benchmark&#x3D; linear_reg.fit()</span><br><span class="line">r2_score(y,benchmark.predict(df))</span><br></pre></td></tr></table></figure>
 
       
     </div><!-- .entry-content -->
@@ -125,7 +172,7 @@ Steps with example boston d" />
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Regression/" rel="tag">Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
 
     </footer>
 </article>
@@ -134,6 +181,8 @@ Steps with example boston d" />
     
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2020/08/25/Regularized-Method-for-Regression/" rel="prev"><span class="meta-nav">←</span> Regularized Method for Regression</a></span>
     
     
         <span class="nav-next"><a href="/2020/08/24/Evaluate-Regression-Model-Performance/" rel="next">Evaluate Regression Model Performance <span class="meta-nav">→</span></a></span>
@@ -167,23 +216,23 @@ Steps with example boston d" />
       <ul>
         
           <li>
-            <a href="/2020/08/24/Multiple-Regression/">Multiple Regression</a>
+            <a href="/2020/08/31/Reinforcement-Learning/">Reinforcement Learning</a>
           </li>
         
           <li>
-            <a href="/2020/08/24/Evaluate-Regression-Model-Performance/">Evaluate Regression Model Performance</a>
+            <a href="/2020/08/29/Google-Colab/">Google Colab</a>
           </li>
         
           <li>
-            <a href="/2020/08/23/Robust-Regression/">Robust Regression</a>
+            <a href="/2020/08/27/SGD/">SGD</a>
           </li>
         
           <li>
-            <a href="/2020/08/23/Five-Steps-Machine-Learning-Process/">Five Steps Machine Learning Process</a>
+            <a href="/2020/08/26/Cross-Valiation/">Cross Valiation</a>
           </li>
         
           <li>
-            <a href="/2020/08/07/The-Load-Less-Travelled/">The Load Less Travelled</a>
+            <a href="/2020/08/26/Learning-Curve/">Learning Curve</a>
           </li>
         
       </ul>
@@ -195,7 +244,7 @@ Steps with example boston d" />
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Feature/" rel="tag">Feature</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Colab/" rel="tag">Google Colab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning-Tools/" rel="tag">Machine Learning Tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nonlinear/" rel="tag">Nonlinear</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynominal-Regression/" rel="tag">Polynominal Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regularized-Method-for-Regression/" rel="tag">Regularized Method for Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reinforcement-Learning/" rel="tag">Reinforcement Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -204,7 +253,7 @@ Steps with example boston d" />
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Atomic-Habits/" style="font-size: 16px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 20px;">Books</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 16px;">Machine Learning</a> <a href="/tags/Meditation/" style="font-size: 12px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 14px;">Morning Habits</a> <a href="/tags/Multiple-Regression/" style="font-size: 10px;">Multiple Regression</a> <a href="/tags/Photography/" style="font-size: 18px;">Photography</a> <a href="/tags/Robust-Regression/" style="font-size: 12px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 16px;">Tech</a> <a href="/tags/Technology/" style="font-size: 12px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 14px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
+      <a href="/tags/Atomic-Habits/" style="font-size: 15px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 18.33px;">Books</a> <a href="/tags/Feature/" style="font-size: 10px;">Feature</a> <a href="/tags/Google-Colab/" style="font-size: 10px;">Google Colab</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Machine-Learning-Tools/" style="font-size: 10px;">Machine Learning Tools</a> <a href="/tags/Meditation/" style="font-size: 11.67px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 13.33px;">Morning Habits</a> <a href="/tags/Multiple-Regression/" style="font-size: 10px;">Multiple Regression</a> <a href="/tags/Nonlinear/" style="font-size: 10px;">Nonlinear</a> <a href="/tags/Photography/" style="font-size: 16.67px;">Photography</a> <a href="/tags/Polynominal-Regression/" style="font-size: 10px;">Polynominal Regression</a> <a href="/tags/Regression/" style="font-size: 15px;">Regression</a> <a href="/tags/Regularized-Method-for-Regression/" style="font-size: 10px;">Regularized Method for Regression</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 10px;">Reinforcement Learning</a> <a href="/tags/Robust-Regression/" style="font-size: 11.67px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 20px;">Tech</a> <a href="/tags/Technology/" style="font-size: 11.67px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 13.33px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
     </div>
   </aside>
 
