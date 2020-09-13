@@ -64,6 +64,63 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-Polynominal-Regression" class="post-Polynominal-Regression post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2020/08/25/Polynominal-Regression/">Polynominal Regression</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/08/25/Polynominal-Regression/" data-id="ckea0oewa000036y3dmd7caxw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="Polynominal-Regression-extending-linear-models-with-basic-functions"><a href="#Polynominal-Regression-extending-linear-models-with-basic-functions" class="headerlink" title="Polynominal Regression: extending linear models with basic functions"></a>Polynominal Regression: extending linear models with basic functions</h1><h2 id="It-is-particular-useful-when-you’re-dealing-with-no-linear-relationship"><a href="#It-is-particular-useful-when-you’re-dealing-with-no-linear-relationship" class="headerlink" title="It is particular useful when you’re dealing with no-linear relationship."></a>It is particular useful when you’re dealing with no-linear relationship.</h2><ul>
+<li><p>Import library</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">import seaborn as sns</span><br><span class="line">import sklearn</span><br><span class="line">import sys</span><br></pre></td></tr></table></figure></li>
+<li><p>Data preparation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(42)</span><br><span class="line">n_samples &#x3D; 100</span><br><span class="line">X &#x3D; np.linspace(0,10,100)</span><br><span class="line">rng &#x3D; np.random.randn(n_samples)*100</span><br><span class="line">y &#x3D; X**3 + rng + 100</span><br><span class="line">plt.figure(figsize&#x3D;(10,8));</span><br><span class="line">plt.scatter(X,y);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">from sklearn.metrics import r2_score</span><br></pre></td></tr></table></figure></li>
+<li><p>Linear Regression</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line">model &#x3D; LinearRegression()</span><br><span class="line">model.fit(X.reshape(-1,1),y)</span><br><span class="line">model_pred &#x3D; model.predict(X.reshape(-1,1))</span><br><span class="line">plt.figure(figsize&#x3D;(10,8))</span><br><span class="line">plt.scatter(X,y)</span><br><span class="line">plt.plot(X,model_pred)</span><br><span class="line">print(r2_score(y,model_pred))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Polynominal Regression : degree = 2 means X to the power of 2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.preprocessing import PolynomialFeatures</span><br><span class="line">poly_reg &#x3D; PolynomialFeatures(degree&#x3D;2)</span><br><span class="line">X_poly &#x3D; poly_reg.fit_transform(X.reshape(-1,1))</span><br><span class="line">lin_reg_2 &#x3D; LinearRegression()</span><br><span class="line">lin_reg_2.fit(X_poly,y.reshape(-1,1))</span><br><span class="line">y_pred &#x3D; lin_reg_2.predict(X_poly)</span><br><span class="line"></span><br><span class="line">plt.figure(figsize&#x3D;(10,8))</span><br><span class="line">plt.scatter(X,y)</span><br><span class="line">plt.plot(X,y_pred)</span><br><span class="line">print(r2_score(y,y_pred))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2020/08/25/Polynominal-Regression/">
+    <time datetime="2020-08-25T13:20:21.000Z" class="entry-date">
+        2020-08-25
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Polynominal-Regression/" rel="tag">Polynominal Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Regression/" rel="tag">Regression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tech/" rel="tag">Tech</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-Regularized-Method-for-Regression" class="post-Regularized-Method-for-Regression post type-post status-publish format-standard hentry">
     <!---->
 
@@ -709,63 +766,6 @@ Without LSTAT<figure class="highlight plain"><table><tr><td class="gutter"><pre>
 
 
   
-    <article id="post-Fear-Setting" class="post-Fear-Setting post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/07/26/Fear-Setting/">Fear Setting</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2020/07/26/Fear-Setting/" data-id="ckd38x22e0000tie25onf8z55" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h1 id="Write-down-something-that-you-wanted-to-do-all-the-time-but-didn’t-take-action"><a href="#Write-down-something-that-you-wanted-to-do-all-the-time-but-didn’t-take-action" class="headerlink" title="Write down something that you wanted to do all the time but didn’t take action"></a>Write down something that you wanted to do all the time but didn’t take action</h1><h2 id="First-Page"><a href="#First-Page" class="headerlink" title="First Page:"></a>First Page:</h2><ul>
-<li>What if I …? (Start a Vacation/Asking Someone Out/Asking a Promotion/Quiting a job/Start a Company/Start Something Excited)</li>
-<li>Define : Writing down all the worse things you can imagine if you take that step</li>
-<li>Prevent : What could I do to prevent each of them</li>
-<li>Repair : What could I do to repair the damage</li>
-</ul>
-<h2 id="Second-Page"><a href="#Second-Page" class="headerlink" title="Second Page"></a>Second Page</h2><ul>
-<li>What might be the benefits of an attempt or partial success?</li>
-</ul>
-<h2 id="Third-Page"><a href="#Third-Page" class="headerlink" title="Third Page"></a>Third Page</h2><ul>
-<li>The cost of inaction?</li>
-</ul>
-<h2 id="Easy-Choices-Hard-Life-Hard-Choices-Easy-Life"><a href="#Easy-Choices-Hard-Life-Hard-Choices-Easy-Life" class="headerlink" title="Easy Choices, Hard Life. Hard Choices, Easy Life"></a>Easy Choices, Hard Life. Hard Choices, Easy Life</h2><h2 id="Remenber-There-is-Only-one-life"><a href="#Remenber-There-is-Only-one-life" class="headerlink" title="Remenber, There is Only one life"></a>Remenber, There is Only one life</h2>
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/07/26/Fear-Setting/">
-    <time datetime="2020-07-26T15:18:40.000Z" class="entry-date">
-        2020-07-26
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Books/" rel="tag">Books</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -795,6 +795,10 @@ Without LSTAT<figure class="highlight plain"><table><tr><td class="gutter"><pre>
       <ul>
         
           <li>
+            <a href="/2020/09/13/Data-Warehouse/">Data Warehouse</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/08/The-Law-of-the-Garbage-Truck/">The Law of the Garbage Truck</a>
           </li>
         
@@ -810,10 +814,6 @@ Without LSTAT<figure class="highlight plain"><table><tr><td class="gutter"><pre>
             <a href="/2020/08/29/Google-Colab/">Google Colab</a>
           </li>
         
-          <li>
-            <a href="/2020/08/26/Learning-Curve/">Learning Curve</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -823,7 +823,7 @@ Without LSTAT<figure class="highlight plain"><table><tr><td class="gutter"><pre>
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Feature/" rel="tag">Feature</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Colab/" rel="tag">Google Colab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning-Tools/" rel="tag">Machine Learning Tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nonlinear/" rel="tag">Nonlinear</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynominal-Regression/" rel="tag">Polynominal Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regularized-Method-for-Regression/" rel="tag">Regularized Method for Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reinforcement-Learning/" rel="tag">Reinforcement Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Habits/" rel="tag">Atomic Habits</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Books/" rel="tag">Books</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Warehouse/" rel="tag">Data Warehouse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Feature/" rel="tag">Feature</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Colab/" rel="tag">Google Colab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Life-Advices/" rel="tag">Life Advices</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning-Tools/" rel="tag">Machine Learning Tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meditation/" rel="tag">Meditation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Morning-Habits/" rel="tag">Morning Habits</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multiple-Regression/" rel="tag">Multiple Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nonlinear/" rel="tag">Nonlinear</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Photography/" rel="tag">Photography</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polynominal-Regression/" rel="tag">Polynominal Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regression/" rel="tag">Regression</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regularized-Method-for-Regression/" rel="tag">Regularized Method for Regression</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reinforcement-Learning/" rel="tag">Reinforcement Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Robust-Regression/" rel="tag">Robust Regression</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scikit-Learn/" rel="tag">Scikit-Learn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tech/" rel="tag">Tech</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Technology/" rel="tag">Technology</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools-of-Titans/" rel="tag">Tools of Titans</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" rel="tag">非暴力沟通</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -832,7 +832,7 @@ Without LSTAT<figure class="highlight plain"><table><tr><td class="gutter"><pre>
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/Atomic-Habits/" style="font-size: 16px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 20px;">Books</a> <a href="/tags/Feature/" style="font-size: 10px;">Feature</a> <a href="/tags/Google-Colab/" style="font-size: 10px;">Google Colab</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 20px;">Machine Learning</a> <a href="/tags/Machine-Learning-Tools/" style="font-size: 10px;">Machine Learning Tools</a> <a href="/tags/Meditation/" style="font-size: 12px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 14px;">Morning Habits</a> <a href="/tags/Multiple-Regression/" style="font-size: 10px;">Multiple Regression</a> <a href="/tags/Nonlinear/" style="font-size: 10px;">Nonlinear</a> <a href="/tags/Photography/" style="font-size: 18px;">Photography</a> <a href="/tags/Polynominal-Regression/" style="font-size: 10px;">Polynominal Regression</a> <a href="/tags/Regression/" style="font-size: 16px;">Regression</a> <a href="/tags/Regularized-Method-for-Regression/" style="font-size: 10px;">Regularized Method for Regression</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 10px;">Reinforcement Learning</a> <a href="/tags/Robust-Regression/" style="font-size: 12px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 20px;">Tech</a> <a href="/tags/Technology/" style="font-size: 12px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 14px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
+      <a href="/tags/Atomic-Habits/" style="font-size: 15px;">Atomic Habits</a> <a href="/tags/Books/" style="font-size: 18.33px;">Books</a> <a href="/tags/Data-Warehouse/" style="font-size: 10px;">Data Warehouse</a> <a href="/tags/Feature/" style="font-size: 10px;">Feature</a> <a href="/tags/Google-Colab/" style="font-size: 10px;">Google Colab</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Life-Advices/" style="font-size: 10px;">Life Advices</a> <a href="/tags/Machine-Learning/" style="font-size: 18.33px;">Machine Learning</a> <a href="/tags/Machine-Learning-Tools/" style="font-size: 10px;">Machine Learning Tools</a> <a href="/tags/Meditation/" style="font-size: 11.67px;">Meditation</a> <a href="/tags/Morning-Habits/" style="font-size: 13.33px;">Morning Habits</a> <a href="/tags/Multiple-Regression/" style="font-size: 10px;">Multiple Regression</a> <a href="/tags/Nonlinear/" style="font-size: 10px;">Nonlinear</a> <a href="/tags/Photography/" style="font-size: 16.67px;">Photography</a> <a href="/tags/Polynominal-Regression/" style="font-size: 10px;">Polynominal Regression</a> <a href="/tags/Regression/" style="font-size: 16.67px;">Regression</a> <a href="/tags/Regularized-Method-for-Regression/" style="font-size: 10px;">Regularized Method for Regression</a> <a href="/tags/Reinforcement-Learning/" style="font-size: 10px;">Reinforcement Learning</a> <a href="/tags/Robust-Regression/" style="font-size: 11.67px;">Robust Regression</a> <a href="/tags/Scikit-Learn/" style="font-size: 10px;">Scikit-Learn</a> <a href="/tags/Tech/" style="font-size: 20px;">Tech</a> <a href="/tags/Technology/" style="font-size: 11.67px;">Technology</a> <a href="/tags/Tools-of-Titans/" style="font-size: 13.33px;">Tools of Titans</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 10px;">随笔</a> <a href="/tags/%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">非暴力沟通</a>
     </div>
   </aside>
 
